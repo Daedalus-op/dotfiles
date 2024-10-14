@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/xubundadu/.customise/Wallpapers/Simple/sunset.png"
+let background = "#0A1932"
+let foreground = "#f6c8ab"
+let cursor     = "#f6c8ab"
+
+" Colors
+let color0  = "#0A1932"
+let color1  = "#BA5C3E"
+let color2  = "#FD6A28"
+let color3  = "#A24D64"
+let color4  = "#E05755"
+let color5  = "#FF833C"
+let color6  = "#FF9251"
+let color7  = "#f6c8ab"
+let color8  = "#ac8c77"
+let color9  = "#BA5C3E"
+let color10 = "#FD6A28"
+let color11 = "#A24D64"
+let color12 = "#E05755"
+let color13 = "#FF833C"
+let color14 = "#FF9251"
+let color15 = "#f6c8ab"
