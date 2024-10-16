@@ -19,7 +19,7 @@
 
 /*@import "~/.config/rofi/colors/cyberpunk.rasi" default */
 @import "~/.config/wal/colorschemes/dark/trees/colors-rofi-dark.rasi"
-/*@import "~/.cache/wal/colors-rofi-dark.rasi"*/
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 * {
     font:                        "JetBrains Mono Nerd Font 10";
