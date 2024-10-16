@@ -38,6 +38,7 @@ if [[ "$layout" == 'NO' ]]; then
 	option_6=" Perpexity"
 	option_7=" Whatsapp"
 	option_8=" PESU"
+	option_9=" EDA Playground"
 else
 	option_1=""
 	option_2=""
@@ -47,6 +48,7 @@ else
 	option_6=""
 	option_7=""
 	option_8=""
+	option_9=""
 fi
 
 # Rofi CMD
@@ -64,7 +66,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd
 }
 
 # Execute Command
@@ -85,6 +87,8 @@ run_cmd() {
 		xdg-open 'https://web.whatsapp.com/'
 	elif [[ "$1" == '--opt8' ]]; then
 		xdg-open 'https://www.pesuacademy.com/Academy/'
+	elif [[ "$1" == '--opt9' ]]; then
+		xdg-open 'https://edaplayground.com/'
 	fi
 }
 
@@ -114,5 +118,8 @@ case ${chosen} in
         ;;
     $option_8)
 		run_cmd --opt8
+        ;;
+    $option_9)
+		run_cmd --opt9
         ;;
 esac

@@ -30,7 +30,6 @@ URLS=(
   ["bing"]="https://www.bing.com/search?q="
   ["duckduckgo"]="https://www.duckduckgo.com/?q="
   ["github"]="https://github.com/search?q="
-  ["symbolhound"]="http://symbolhound.com/?q="
   ["searchcode"]="https://searchcode.com/?q="
   ["youtube"]="https://www.youtube.com/results?search_query="
   ["perplexity"]="https://www.perplexity.ai/search?s=o&q="
