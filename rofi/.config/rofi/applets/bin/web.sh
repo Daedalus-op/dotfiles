@@ -34,6 +34,7 @@ URLS=(
   ["searchcode"]="https://searchcode.com/?q="
   ["youtube"]="https://www.youtube.com/results?search_query="
   ["perplexity"]="https://www.perplexity.ai/search?s=o&q="
+  ["tldr"]="https://tldr.inbrowser.app/search?query="
 )
 
 # List for rofi
