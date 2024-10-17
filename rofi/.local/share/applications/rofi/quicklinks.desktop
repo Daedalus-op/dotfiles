@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=applet -r quicklinks
+Name=Quicklinks (Rofi)
+Icon=/home/xubundadu/.customise/LOGOs/multitool.png

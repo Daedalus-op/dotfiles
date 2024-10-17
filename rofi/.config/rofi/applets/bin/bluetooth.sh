@@ -41,6 +41,7 @@ rofi_cmd() {
 		-mesg "$mesg" \
 		-markup-rows \
 		-theme ${theme} \
+		-selected-row 2 \
 		-normal-window -steal-focus
 }
 

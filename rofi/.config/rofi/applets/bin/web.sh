@@ -26,18 +26,20 @@ list_row='6'
 declare -A URLS
 
 URLS=(
-  ["google"]="https://www.google.com/search?q="
-  ["bing"]="https://www.bing.com/search?q="
-  ["duckduckgo"]="https://www.duckduckgo.com/?q="
-  ["github"]="https://github.com/search?q="
-  ["searchcode"]="https://searchcode.com/?q="
-  ["youtube"]="https://www.youtube.com/results?search_query="
-  ["perplexity"]="https://www.perplexity.ai/search?s=o&q="
-  ["tldr"]="https://tldr.inbrowser.app/search?query="
+  [" Google"]="https://www.google.com/search?q="
+  [" Bing"]="https://www.bing.com/search?q="
+  [" Duckduckgo"]="https://www.duckduckgo.com/?q="
+  [" Github"]="https://github.com/search?q="
+  [" Searchcode"]="https://searchcode.com/?q="
+  [" Youtube"]="https://www.youtube.com/results?search_query="
+  [" Perplexity"]="https://www.perplexity.ai/search?s=o&q="
+  [" Tldr"]="https://tldr.inbrowser.app/search?query="
+  [" Reddit"]="https://www.reddit.com/search/?q="
 )
 
 # List for rofi
 gen_list() {
+	echo "Web Search"
     for i in "${!URLS[@]}"
     do
       echo "$i"
@@ -50,6 +52,7 @@ rofi_cmd() {
 		-markup-rows \
 		-theme ${theme} \
 		-normal-window -steal-focus \
+		-selected-row 1 \
 		-matching fuzzy -location 0 $*
 }
 
