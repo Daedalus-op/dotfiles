@@ -63,24 +63,21 @@ rofi_cmd() {
 		-mesg "$mesg" \
 		-markup-rows \
 		-theme ${theme} \
-		-selected-row 1 \
 		-normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "Quicklinks\
-		\n$option_1\
-		\n$option_2\
-		\n$option_3\
-		\n$option_4\
-		\n$option_5\
-		\n$option_6\
-		\n$option_7\
-		\n$option_8\
-		\n$option_9\
-		\n$option_10\
-		" | rofi_cmd
+	echo -e "$option_1\n\
+$option_2\n\
+$option_3\n\
+$option_4\n\
+$option_5\n\
+$option_6\n\
+$option_7\n\
+$option_8\n\
+$option_9\n\
+$option_10" | rofi_cmd
 }
 
 # Execute Command
@@ -94,7 +91,7 @@ run_cmd() {
 	elif [[ "$1" == '--opt4' ]]; then
 		xdg-open 'https://www.github.com/'
 	elif [[ "$1" == '--opt5' ]]; then
-		xdg-open 'https://www.reddit.com/'
+		firefox 'https://www.reddit.com/'
 	elif [[ "$1" == '--opt6' ]]; then
 		xdg-open 'https://www.perplexity.ai/'
 	elif [[ "$1" == '--opt7' ]]; then
@@ -103,7 +100,7 @@ run_cmd() {
 		xdg-open 'https://www.pesuacademy.com/Academy/'
 	elif [[ "$1" == '--opt9' ]]; then
 		xdg-open 'https://edaplayground.com/'
-	elif [[ "$1" == '--opt9' ]]; then
+	elif [[ "$1" == '--opt10' ]]; then
 		xdg-open 'http://192.168.254.1:8090/'
 	fi
 }

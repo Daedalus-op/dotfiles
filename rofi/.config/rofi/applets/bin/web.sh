@@ -39,7 +39,6 @@ URLS=(
 
 # List for rofi
 gen_list() {
-	echo "Web Search"
     for i in "${!URLS[@]}"
     do
       echo "$i"
@@ -52,7 +51,6 @@ rofi_cmd() {
 		-markup-rows \
 		-theme ${theme} \
 		-normal-window -steal-focus \
-		-selected-row 1 \
 		-matching fuzzy -location 0 $*
 }
 
