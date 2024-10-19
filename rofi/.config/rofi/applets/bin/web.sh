@@ -27,10 +27,10 @@ declare -A URLS
 
 URLS=(
   [" Google"]="https://www.google.com/search?q="
-  [" Bing"]="https://www.bing.com/search?q="
+  [" Bing"]="https://www.bing.com/search?q="
   [" Duckduckgo"]="https://www.duckduckgo.com/?q="
   [" Github"]="https://github.com/search?q="
-  [" Searchcode"]="https://searchcode.com/?q="
+  [" Searchcode"]="https://searchcode.com/?q="
   [" Youtube"]="https://www.youtube.com/results?search_query="
   [" Perplexity"]="https://www.perplexity.ai/search?s=o&q="
   [" Tldr"]="https://tldr.inbrowser.app/search?query="

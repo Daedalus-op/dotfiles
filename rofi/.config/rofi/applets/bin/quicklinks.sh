@@ -36,10 +36,10 @@ if [[ "$layout" == 'NO' ]]; then
 	option_4=" Github"
 	option_5=" Reddit"
 	option_6=" Perpexity"
-	option_7=" Whatsapp"
+	option_7=" Whatsapp"
 	option_8=" PESU"
 	option_9=" EDA Playground"
-	option_10=" Login"
+	option_10=" Login"
 else
 	option_1=""
 	option_2=""
@@ -47,10 +47,10 @@ else
 	option_4=""
 	option_5=""
 	option_6=""
-	option_7=""
+	option_7=""
 	option_8=""
 	option_9=""
-	option_10=""
+	option_10=""
 fi
 
 # Rofi CMD
