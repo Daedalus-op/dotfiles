@@ -28,8 +28,6 @@ call plug#end()
 " Colors ______________________________________________________________________ 
 
 set background=dark
-"set termguicolors
-"colorscheme ayu
 highlight Visual ctermfg=DarkBlue
 let g:smoothie_experimental_mappings = 1
 let g:airline_powerline_fonts = 1
@@ -61,28 +59,24 @@ let g:airline#extensions#tabline#formatter = 'jsformatter'
 let g:airline_theme='iceberg'
 
 
-" Float Term ______________________________________________________________________ 
-
-
-
 " Keybinds ______________________________________________________________________ 
 
 let mapleader = " "
 
 	" Convinience
-nmap <A-n> 0i<CR><ESC>k
-nmap <C-n> A<CR><ESC>
+map <A-n> 0i<CR><ESC>k
+map <C-n> o<ESC>
 imap ;; <ESC>
-nmap <C-a> ggVG
-nmap <A-a> GVgg
+map <C-a> ggVG
+noremap <A-a> GVgg
+map <C-s> :w<CR>
 vmap cy "+y
-vmap cp "+p
-nmap cp "+p
+map cp "+p
+map cp "+p
 
 	" NERDTree
-nmap <C-e> :NERDTreeToggle<CR>
 nmap <leader>e :NERDTreeToggle<CR>
-imap <C-e> <ESC>:NERDTreeToggle<CR>
+map <silent> <C-e> <ESC>:NERDTreeToggle<CR>
 
 	" Buffers
 nmap <leader>l :bn<CR>
@@ -96,7 +90,7 @@ nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 
 	" FTerm
-nmap <leader>ft :FloatermNew<CR>
+nmap <leader>fn :FloatermNew<CR>
 nmap <leader>ff :FloatermToggle<CR>
 nmap <leader>g :FloatermNew --wintype=float --name=lazygit --autoclose=2 --cmd="cd lazygit"<CR>
 nmap <leader>fv :vert term<CR><C-w>L

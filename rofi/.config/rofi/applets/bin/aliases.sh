@@ -35,7 +35,6 @@ run_rofi() {
 
 #----------------------------------------------------------------------------------------------------
 
-shopt -s expand_aliases
 alias he="echo help"
 source /home/xubundadu/.shortcuts.sh
 
@@ -46,15 +45,15 @@ aliases=$(alias -p | sed 's/alias //; s/=\(.*\)//' )
 chosen_alias=$(echo -e "Aliases\n$aliases" | uniq -u | rofi_cmd  )
 echo $chosen_alias
 
-if [ "$chosen_alias" = "" ]; then
-	exit
-else
+# if [[ "$chosen_alias" = "" ]]; then
+# 	exit
+# else
   	success_message="$chosen_alias executed."
 	#echo '$status=\"\' > .temp
 	#exec bash -c "~/.shortcuts.sh && $chosen_alias 2>> .temp"
-	$chosen_alias && status = "Success"
+	$chosen_alias && status="Success"
 	echo $status
 	if [[ $status = "Success" ]]; then
 		echo -e $success_message | rofi -show -dmenu -steal-focus -normal-window -theme ${theme}
 	fi
-fi
+# fi
