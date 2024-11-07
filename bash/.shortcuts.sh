@@ -7,6 +7,7 @@ alias maintain="sudo apt update && sudo apt upgrade && sudo apt autoremove && fl
 alias mne="maintain && exit" # Maintain and exit
 alias kittup="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n" # Update kitty
 alias sai="sudo apt install" # apt update
+alias python="python3"
 
 ## cli
 alias glt="git log --oneline --graph" # Git commit graph

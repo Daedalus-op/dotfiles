@@ -80,9 +80,12 @@ map <silent> <C-e> <ESC>:NERDTreeToggle<CR>
 
 	" Buffers
 nmap <leader>l :bn<CR>
+map <C-tab> :bn<CR>
 nmap <leader>h :bp<CR>
-nmap <C-q> :q<CR>
+map <C-S-tab> :bp<CR>
+nmap <silent> <C-q> :q<CR>
 nmap <leader>c :bd<CR>
+map <C-c> :bd<CR>
 nmap <leader>b :ls<CR>:b 
 nmap <leader>v :ls<CR>:vertical sb 
 nmap <leader>s :w<CR>
