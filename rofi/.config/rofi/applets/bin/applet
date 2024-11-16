@@ -11,7 +11,7 @@
 
 # Set to default path if applet path is not defined
 [ "$ROFI_APPLETS_PATH" = "" ] && ROFI_APPLETS_PATH=$HOME/.config/rofi/applets/bin
-options=`ls ${ROFI_APPLETS_PATH}/ | sed "s#${ROFI_APPLETS_PATH}/applets##g" | tr "/" " "`
+options=`ls ${ROFI_APPLETS_PATH}/ | sed "s#${ROFI_APPLETS_PATH}/applets##g" | tr "/" " " | grep -v applet` 
 [ "$options" = "" ] && echo -e "error: No applet were found at $ROFI_APPLETS_PATH directory.
 Either move applets to the $ROFI_APPLETS_PATH or define \$ROFI_APPLETS_PATH at .bashrc" 1>&2
  

@@ -48,6 +48,8 @@ let &fillchars ..= ',eob: '
 set nocompatible
 filetype plugin on
 syntax on
+set tabstop=4
+set shiftwidth=4
 
 
 " vim-airline settings ______________________________________________________________________ 

@@ -14,9 +14,9 @@
 ## How to use
 ```sh
 cd
-git clone https://github.com/Daedalus-op/dotfiles $HOME/.dotfiles # clone the repo
+git clone https://github.com/Daedalus-op/dotfiles $HOME/.files # clone the repo
 sudo apt install stow # Installing stow
-cd dotfiles
+cd .files
 stow $folder_name
 ```
 ## Configurations
@@ -37,7 +37,7 @@ stow $folder_name
 > - All Wallpapers and LOGOs are stored in the custom folder
 > - Use `:PlugInstall` to install all vim plugins, otherwise comment the plugins out
 > - Launch rofi applet using `applet` command (Use `applet -h` for more info)
-> - In case of error from rofi comment out line 22 of `$HOME/.dotfiles/rofi/.config/rofi/launchers/type-1/shared`
+> - In case of error from rofi comment out line 22 of `$HOME/.files/rofi/.config/rofi/launchers/type-1/shared`
 
 ## References
 - [adi1090x Rofi Collection](https://github.com/adi1090x/rofi)

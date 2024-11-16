@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=applet -r wall
+Exec=applet -r wallpaper
 Name=Wallpapers (Rofi)
 Icon=/home/xubundadu/.customise/LOGOs/multitool.png

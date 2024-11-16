@@ -3,8 +3,20 @@ eval "$(starship init bash)"
 
 # alias
 ## updates and installs
-alias maintain="sudo apt update && sudo apt upgrade && sudo apt autoremove && flatpak update" # Maintain
-alias mne="maintain && exit" # Maintain and exit
+function mne {
+	echo "Apt update------------------------------------------------------------------------------------------------------"
+	sudo apt update
+	echo "Apt upgrade------------------------------------------------------------------------------------------------------"
+	sudo apt upgrade
+	echo "Apt autoremove------------------------------------------------------------------------------------------------------"
+	sudo apt autoremove
+	echo "Flatpak update------------------------------------------------------------------------------------------------------"
+	flatpak update
+	echo "Flatpak clean------------------------------------------------------------------------------------------------------"
+	flatpak uninstall --unused --delete-data
+	echo "----------------------------------------Maintain done---------------------------------------------------"
+}
+# alias mne="maintain && exit" # Maintain and exit
 alias kittup="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n" # Update kitty
 alias sai="sudo apt install" # apt update
 alias python="python3"
@@ -27,16 +39,12 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 ## work
-alias xilset=".  /tools/Xilinx/Vitis/2022.2/settings64.sh"
+alias xilset=". /tools/Xilinx/Vitis/2022.2/settings64.sh"
 alias xrtset=". /opt/xilinx/xrt/setup.sh"
 alias openl="nix-shell --pure ~/openlane2/shell.nix"
 alias cdl1="cd ~/Vitis_Libraries/database/L1"
 alias cdl2="cd ~/Vitis_Libraries/database/L2"
 alias cdl3="cd ~/Vitis_Libraries/database/L3"
-
-## rv 32 core sync
-alias rvsv="rsync -av ~/play/play.srcs/sources_1/imports/rv32_core/src/ /mnt/files/Files/rv32_core/src/ && rsync -av ~/play/play.srcs/sources_1/imports/rv32_core/test/ /mnt/files/Files/rv32_core/test/" # rsync from vivado directory
-alias rvsg="rsync -av /mnt/files/Files/rv32_core/src/ ~/play/play.srcs/sources_1/imports/rv32_core/src/ && rsync -av /mnt/files/Files/rv32_core/test/ ~/play/play.srcs/sources_1/imports/rv32_core/test/ " # rsync from github directory
 
 # Functions
 ## obsidian note sync
@@ -61,4 +69,5 @@ function notes {
 
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty"
 export LANG=en_US.UTF-8
+export STARSHIP_CONFIG=~/.files/starship/.config/starship/pure.toml
 xilset

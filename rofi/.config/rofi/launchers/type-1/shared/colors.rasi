@@ -17,8 +17,8 @@
 
 /* Import color-scheme from `colors` directory */
 
-/*@import "~/.config/rofi/colors/cyberpunk.rasi" */ 			/* Default from adi1090x */
-@import "~/.config/wal/colorschemes/dark/trees/colors-rofi-dark.rasi" 	/* Stored rofi wal generated theme */
+@import "~/.config/rofi/colors/cyberpunk.rasi"				/* Default from adi1090x */
+@import "~/.files/wal/.config/wal/colorschemes/dark/trees/colors-rofi-dark.rasi" 	/* Stored rofi wal generated theme */
 @import "~/.cache/wal/colors-rofi-dark.rasi"				/* Dynamically created colors from wal (Remove in case of error) */
 
 * {

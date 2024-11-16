@@ -45,7 +45,7 @@ chosen_cat=$(echo -e "$categories" | uniq -u | rofi_cmd  )
 	wal -i "$HOME/.customise/Wallpapers/$chosen_cat/$wallpaper"
 	kitwal=
 	echo $kitwal
-	sed -i "\$s|.*|background_image ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.config/kitty/kitty.conf
+	sed -i "\$s|.*|background_image ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.config/kitty/variables.conf
     else
       exit
     fi
