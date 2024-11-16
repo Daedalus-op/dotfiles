@@ -29,6 +29,7 @@ alias ...="cd ../.."
 ## work
 alias xilset=".  /tools/Xilinx/Vitis/2022.2/settings64.sh"
 alias xrtset=". /opt/xilinx/xrt/setup.sh"
+alias openl="nix-shell --pure ~/openlane2/shell.nix"
 alias cdl1="cd ~/Vitis_Libraries/database/L1"
 alias cdl2="cd ~/Vitis_Libraries/database/L2"
 alias cdl3="cd ~/Vitis_Libraries/database/L3"

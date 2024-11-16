@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Get the file type
+MIME=$(file --mime-type -b "$1")
+
+# Preview based on MIME type
+case "$MIME" in
+    # Text files
+    text/*)
+        bat --color=always --style=changes,numbers --terminal-width=$(tput cols) "$1"
+        ;;
+    # Markdown files
+    application/x-markdown)
+        bat --color=always --style=changes,numbers "$1"
+        ;;
+    # PDFs (using pdftotext)
+    application/pdf)
+        pdftotext "$1" - | bat --color=always --style=changes,numbers --terminal-width=$(tput cols) -
+        ;;
+    # Images (using chafa for terminal previews)
+    image/*)
+        chafa "$1"
+        ;;
+    # Default case for unknown types
+    *)
+        echo "Cannot preview this file type."
+        ;;
+esac
