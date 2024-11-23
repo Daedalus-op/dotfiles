@@ -33,7 +33,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p " $USER@$host" \
 		-mesg " Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme ${dir}/${theme}.rasi \
 		-normal-window -steal-focus
 }
 

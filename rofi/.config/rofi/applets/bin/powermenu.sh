@@ -93,6 +93,7 @@ confirm_run () {
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
+		playerctl -a pause
 		dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'kill -9 -1'

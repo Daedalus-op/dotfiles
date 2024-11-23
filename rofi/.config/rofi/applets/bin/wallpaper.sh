@@ -43,6 +43,7 @@ chosen_cat=$(echo -e "$categories" | uniq -u | rofi_cmd  )
 	kitwal=
 	echo $kitwal
 	sed -i "\$s|.*|background_image ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.config/kitty/variables.conf
+	sed -i "s|^    background-image:.*|    background-image:\t\t\turl(\"~/.customise/Wallpapers/$chosen_cat/$wallpaper\", height);|" ~/.config/rofi/applets/type-5/style.rasi 
     else
       exit
     fi
