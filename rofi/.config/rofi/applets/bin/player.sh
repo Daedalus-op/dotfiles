@@ -16,15 +16,37 @@ fi
 rofi_cmd() {
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str 'textbox-prompt-colon {str: "󰖪";}' \
-		-modi spotify:"python3 -m rofify"\
-		-mesg "$mesg" \
+		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
 		-normal-window -steal-focus \
-		-i -show spotify
+		-i -selected-row 0
 }
 
 
 #----------------------------------------------------------------------------------------------------
 
-rofi_cmd
+players=$(playerctl -l)
+echo $players
+
+chosen_player=$(echo -e "$players" | rofi_cmd )
+echo $chosen_player
+
+if [[ -n "$chosen_player" ]]; then
+	echo hello
+	action=$(echo -e "toggle\nplay\npause\nstop\nprevious\nnext" | rofi_cmd  )
+
+	if [[ -n "$action" ]]; then
+		if [[ $action == "toggle" ]]; then
+			playerctl -p $chosen_player play-pause
+		else
+			playerctl -p $chosen_player $action
+		fi
+	else
+		exit
+	fi
+else
+	echo adhh
+	exit
+fi
+echo etp3

@@ -32,9 +32,6 @@ categories=$(cd $HOME/.customise/Wallpapers/ && ls)
 
 chosen_cat=$(echo -e "$categories" | uniq -u | rofi_cmd  )
 
-
-
-
 # setting background for kitty, todo
 
   if [[ -n "$chosen_cat" ]]; then

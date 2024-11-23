@@ -3,7 +3,7 @@ eval "$(starship init bash)"
 
 # alias
 ## updates and installs
-function mne {
+function maintain {
 	echo "Apt update------------------------------------------------------------------------------------------------------"
 	sudo apt update
 	echo "Apt upgrade------------------------------------------------------------------------------------------------------"
@@ -14,9 +14,9 @@ function mne {
 	flatpak update
 	echo "Flatpak clean------------------------------------------------------------------------------------------------------"
 	flatpak uninstall --unused --delete-data
-	echo "----------------------------------------Maintain done---------------------------------------------------"
+	echo "----------------------------------------------Maintain done--------------------------------------------------------"
 }
-# alias mne="maintain && exit" # Maintain and exit
+alias mne="maintain && exit" # Maintain and exit
 alias kittup="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n" # Update kitty
 alias sai="sudo apt install" # apt update
 alias python="python3"
