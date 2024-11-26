@@ -53,6 +53,15 @@ rofi_cmd() {
 		-normal-window -steal-focus \
 		-matching fuzzy -location 0 $*
 }
+rofi_search() {
+	rofi -theme-str "listview {columns: $list_col; lines: $list_row;} mainbox {orientation: vertical;}" \
+		-dmenu \
+		-i \
+		-markup-rows \
+		-theme ${theme} \
+		-normal-window -steal-focus \
+		-matching fuzzy -location 0 $*
+}
 
 main() {
   # Pass the list to rofi
@@ -61,7 +70,7 @@ main() {
 
   if [[ -n "$platform" ]]; then
     prompt="Query"
-    query=$( (echo ) | rofi_cmd )
+    query=$( (echo ) | rofi_search )
 
     if [[ -n "$query" ]]; then
       url=${URLS[$platform]}$query
