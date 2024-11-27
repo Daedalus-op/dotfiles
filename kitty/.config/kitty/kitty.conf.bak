@@ -4,8 +4,8 @@ enabled_layouts Tall, *
 tab_bar_edge top
 
 remember_window_size no
-initial_window_width 1100
-initial_window_height 700
+initial_window_width 1700
+initial_window_height 850
 
 tab_bar_style powerline
 tab_powerline_style round
@@ -22,10 +22,8 @@ window_border_width 1
 draw_minimal_borders yes     # Enable minimal borders for better visibility
 #shell_integration no-cursor
 
-# BEGIN_KITTY_THEME
-# Argonaut
-include ~/.cache/wal/colors-kitty.conf
-# include current-theme.conf
-# END_KITTY_THEME
+# Split into current folder
+map kitty_mod+d launch --cwd=current --type=tab --location=neighbor
+map kitty_mod+enter launch --cwd=current --type=window
 
-background_image ~/.customise/Wallpapers/Scenery/sunset.png
+include variables.conf

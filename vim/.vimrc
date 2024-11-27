@@ -100,3 +100,6 @@ nmap <leader>ff :FloatermToggle<CR>
 nmap <leader>g :FloatermNew --wintype=float --name=lazygit --autoclose=2 --cmd="cd lazygit"<CR>
 nmap <leader>fv :vert term<CR><C-w>L
 tnoremap <silent> ;; <C-\><C-n>:FloatermToggle <CR>
+
+" Extra
+source "~/.extra.vim"
