@@ -6,6 +6,7 @@
 ![Rofi fuji](preview/rofi_fuji.png)
 ![Launcher fuji](preview/rofi_launcher_fuji.png)
 ![Wall E](preview/rofi_wall_e.png)
+![Humming Bird](preview/Humming_Bird.png)
 
 ## System
 - Ubuntu 20.04 LTS

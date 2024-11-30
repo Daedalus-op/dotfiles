@@ -91,7 +91,7 @@ run_cmd() {
 	elif [[ "$1" == '--opt4' ]]; then
 		xdg-open 'https://www.github.com/'
 	elif [[ "$1" == '--opt5' ]]; then
-		firefox 'https://www.reddit.com/'
+		xdg-open 'https://www.reddit.com/'
 	elif [[ "$1" == '--opt6' ]]; then
 		xdg-open 'https://www.perplexity.ai/'
 	elif [[ "$1" == '--opt7' ]]; then

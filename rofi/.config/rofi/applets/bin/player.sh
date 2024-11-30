@@ -23,6 +23,12 @@ rofi_cmd() {
 		-i -selected-row 0
 }
 
+option_1="󰐎 Toggle"
+option_2=" Play"
+option_3=" Pause"
+option_4=" Stop"
+option_5="󰒮 Previous"
+option_6="󰒭 Next"
 
 #----------------------------------------------------------------------------------------------------
 
@@ -33,20 +39,32 @@ chosen_player=$(echo -e "$players" | rofi_cmd )
 echo $chosen_player
 
 if [[ -n "$chosen_player" ]]; then
-	echo hello
-	action=$(echo -e "toggle\nplay\npause\nstop\nprevious\nnext" | rofi_cmd  )
+	action=$(echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd  )
 
 	if [[ -n "$action" ]]; then
-		if [[ $action == "toggle" ]]; then
-			playerctl -p $chosen_player play-pause
-		else
-			playerctl -p $chosen_player $action
-		fi
+		case ${action} in
+			$option_1)
+				playerctl -p $chosen_player play-pause
+				;;
+			$option_2)
+				playerctl -p $chosen_player play
+				;;
+			$option_3)
+				playerctl -p $chosen_player pause
+				;;
+			$option_4)
+				playerctl -p $chosen_player stop
+				;;
+			$option_5)
+				playerctl -p $chosen_player previous
+				;;
+			$option_6)
+				playerctl -p $chosen_player next
+				;;
+		esac
 	else
 		exit
 	fi
 else
-	echo adhh
 	exit
 fi
-echo etp3
