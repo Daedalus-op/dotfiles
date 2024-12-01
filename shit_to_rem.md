@@ -17,7 +17,13 @@
 
 # Missing option to add search engines to firefox
 - in about:config
-- make browser.urlbar.update2.engineAliasRefresh as true
+- make `browser.urlbar.update2.engineAliasRefresh` as true
+
+# Add scroll through tabs config
+- in about:config
+- make `toolkit.tabbox.switchByScrolling` as true
+ 
+
 
 # Corrupted memory so format and assign file system
 - `mkfs.ext4 /dev/sda1`
