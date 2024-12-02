@@ -98,7 +98,7 @@ run_cmd() {
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'kill -9 -1'
 	elif [[ "$1" == '--opt3' ]]; then
-		confirm_run 'systemctl suspend -i' #'amixer set Master mute' 
+		confirm_run 'systemctl suspend -i; playerctl -a pause'
 	elif [[ "$1" == '--opt4' ]]; then
 		confirm_run 'systemctl hibernate -i'
 	elif [[ "$1" == '--opt5' ]]; then

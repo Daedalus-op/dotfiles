@@ -22,7 +22,7 @@ stow $folder_name
 ```
 ## Configurations
 - Rofi - Launcher
-- Kitty - Aesthetic terminal
+- Kitty - Terminal
 - Starship - Cleaner terminal
 - Startpages - Browser startpages
 - Vim - Plugins and keybinds
