@@ -22,6 +22,9 @@ Plug 'eskilop/NorthernLights.vim'
 
 	" Local sourced
 
+	" Extra
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 
 
@@ -93,6 +96,7 @@ nmap <leader>v :ls<CR>:vertical sb
 nmap <leader>s :w<CR>
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
+nmap <C-h> :Startify<CR>
 
 	" FTerm
 nmap <leader>fn :FloatermNew<CR>
@@ -100,6 +104,7 @@ nmap <leader>ff :FloatermToggle<CR>
 nmap <leader>g :FloatermNew --wintype=float --name=lazygit --autoclose=2 --cmd="cd lazygit"<CR>
 nmap <leader>fv :vert term<CR><C-w>L
 tnoremap <silent> ;; <C-\><C-n>:FloatermToggle <CR>
+tnoremap <silent> <ESC><ESC> <C-\><C-n>
 
 " Extra
 source "~/.extra.vim"

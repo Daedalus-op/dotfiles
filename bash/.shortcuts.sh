@@ -31,4 +31,4 @@ function notes {
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty"
 export LANG=en_US.UTF-8
 export STARSHIP_CONFIG=~/.files/starship/.config/starship/pure.toml
-xilset
+# xilset
