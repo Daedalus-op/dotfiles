@@ -1560,10 +1560,11 @@ StEntry StLabel.hint-text,
   border: none;
   height: 35px;
   background-color: rgba(26, 27, 38, 0.85);
+  border-radius: 2px;
 }
 
 #panel .panel-corner {
-  -panel-corner-radius: 0;
+  -panel-corner-radius: 2px;
   -panel-corner-background-color: rgba(26, 27, 38, 0.6);
   -panel-corner-border-width: 2px;
   -panel-corner-border-color: transparent;
