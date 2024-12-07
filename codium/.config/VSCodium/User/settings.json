@@ -1,7 +1,7 @@
 {
   "vscode_custom_css.imports": [
-    "file:///home/xubundadu/.customise/vscode-settings-json/custom-vscode.css",
-    "file:///home/xubundadu/.customise/vscode-settings-json/vscode-script.js"
+    "file:///home/xubundadu/.config/VSCodium/User/chrome/custom-vscode.css",
+    "file:///home/xubundadu/.config/VSCodium/User/chrome/vscode-script.js"
   ],
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Material Theme Ocean High Contrast",
