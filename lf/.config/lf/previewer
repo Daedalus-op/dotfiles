@@ -2,6 +2,11 @@
 
 # Get the file type
 MIME=$(file --mime-type -b "$1")
+file=$1
+w=$2
+h=$3
+x=$4
+y=$5
 
 # Preview based on MIME type
 case "$MIME" in
@@ -19,10 +24,13 @@ case "$MIME" in
         ;;
     # Images (using chafa for terminal previews)
     image/*)
-        chafa "$1"
+		chafa "$1"
+		# chafa -f kitty --animate off --polite on "$1"
+		# kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" < /dev/null > /dev/tty
         ;;
     # Default case for unknown types
     *)
         echo "Cannot preview this file type."
         ;;
 esac
+return 127

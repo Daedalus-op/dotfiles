@@ -1,0 +1,65 @@
+{
+  "vscode_custom_css.imports": [
+    "file:///home/xubundadu/.customise/vscode-settings-json/custom-vscode.css",
+    "file:///home/xubundadu/.customise/vscode-settings-json/vscode-script.js"
+  ],
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
+  "symbols.hidesExplorerArrows": false,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.formatOnSave": true,
+  "editor.lineHeight": 1.8,
+  "editor.fontSize": 14,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "breadcrumbs.enabled": false,
+  "workbench.activityBar.location": "top",
+  "editor.minimap.autohide": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+  "workbench.statusBar.visible": true,
+
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+
+  "workbench.layoutControl.enabled": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts ${capture}.*.tsx",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "tailwind.config.*": "tailwind.config*, postcss.config*",
+    ".env": ".env*"
+  },
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  //COLOR CUSTOMIZATIONS
+
+  "vim.handleKeys": {
+    "<C-n>": false,
+    "<C-e>": false,
+    "<C-b>": false,
+    "<C-k>": false
+  },
+
+  "window.title": " ",
+  "editor.guides.indentation": false,
+  "editor.bracketPairColorization.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.tree.enableStickyScroll": false,
+  "window.customTitleBarVisibility": "auto",
+  "window.menuBarVisibility": "toggle",
+  "systemverilogFormatter.veribleBuild": "Ubuntu-20.04-focal-x86_64",
+  "window.doubleClickIconToClose": true,
+  "zenMode.showTabs": "single",
+  "window.confirmBeforeClose": "keyboardOnly"
+  // The keybinds
+  //
+  // <C-b> toggle primary side bar
+  // <C-q> open whatever u want
+  // <C-e> open a desired file
+  // <S-Ins> toggle vim-mode
+  // <C-Shift-P> command pallete
+}
