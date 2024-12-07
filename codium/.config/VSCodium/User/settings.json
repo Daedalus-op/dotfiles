@@ -1,22 +1,21 @@
 {
   "vscode_custom_css.imports": [
-    "file:///home/xubundadu/.customise/vscode-settings-json/custom-vscode.css",
-    "file:///home/xubundadu/.customise/vscode-settings-json/vscode-script.js"
+    "file:///home/xubundadu/.config/VSCodium/User/chrome/custom-vscode.css",
+    "file:///home/xubundadu/.config/VSCodium/User/chrome/vscode-script.js"
   ],
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Material Theme Ocean High Contrast",
-  "symbols.hidesExplorerArrows": false,
+  "symbols.hidesExplorerArrows": true,
   "editor.fontFamily": "JetBrains Mono",
   "editor.formatOnSave": true,
   "editor.lineHeight": 1.8,
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "breadcrumbs.enabled": false,
   "workbench.activityBar.location": "top",
   "editor.minimap.autohide": true,
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.horizontal": "hidden",
-  "workbench.statusBar.visible": true,
 
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -35,7 +34,6 @@
   },
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontFamily": "JetBrains Mono",
-  //COLOR CUSTOMIZATIONS
 
   "vim.handleKeys": {
     "<C-n>": false,
@@ -49,12 +47,13 @@
   "editor.bracketPairColorization.enabled": false,
   "workbench.sideBar.location": "right",
   "workbench.tree.enableStickyScroll": false,
-  "window.customTitleBarVisibility": "auto",
   "window.menuBarVisibility": "toggle",
   "systemverilogFormatter.veribleBuild": "Ubuntu-20.04-focal-x86_64",
   "window.doubleClickIconToClose": true,
   "zenMode.showTabs": "single",
-  "window.confirmBeforeClose": "keyboardOnly"
+  "window.confirmBeforeClose": "keyboardOnly",
+  "window.customTitleBarVisibility": "auto",
+  "window.newWindowProfile": "Default"
   // The keybinds
   //
   // <C-b> toggle primary side bar
