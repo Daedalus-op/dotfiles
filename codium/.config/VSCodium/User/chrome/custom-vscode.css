@@ -1,0 +1,199 @@
+/* Code comment style */
+.title-label > h2 {
+  display: none;
+}
+.editor-actions {
+  display: none;
+}
+.pane-body {
+  padding: 8px;
+}
+.pane-header {
+  padding: 0 8px;
+}
+.nosidebar .inline-tabs-placeholder {
+  width: 75px;
+}
+.split-view-view:first-child .pane-header {
+  display: none !important;
+}
+.monaco-list-row {
+  border-radius: 2px;
+}
+.monaco-list-row.selected,
+.monaco-list-row.focused {
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+  outline: 1px solid #00000020 !important;
+}
+.monaco-workbench .monaco-list:not(.element-focused):focus:before {
+  display: none;
+}
+
+.monaco-workbench::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 999999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    visibility: hidden;
+}
+
+.line-numbers {
+  width: 36px !important;
+}
+.current-line-margin-both {
+  background-color: #ffffff12 !important;
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+  width: calc(100% - 16px) !important;
+  left: 12px !important;
+  border-radius: 2px;
+}
+
+.statusbar {
+  opacity: 1;
+}
+.statusbar:hover {
+  opacity: 1;
+}
+
+.quick-input-widget {
+  top: 50% !important;
+  transform: translateY(-51%);
+  backdrop-filter: blur(10px);
+  border: 1px solid #ffffff12;
+}
+.quick-input-widget .monaco-inputbox {
+  height: 32px !important;
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+.quick-input-widget .monaco-list-rows {
+  background: transparent !important;
+}
+
+.hover-widget {
+  backdrop-filter: blur(10px);
+}
+.tab {
+  border: 1px solid transparent !important;
+  transition: all 0.2s ease-in-out;
+  border-radius: 2px !important;
+}
+.tab.active {
+  overflow: hidden;
+  border: 1px solid #00000020 !important;
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+}
+
+.monaco-button {
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+}
+
+.notification-toast {
+  backdrop-filter: blur(10px);
+  border: 1px solid #ffffff09 !important;
+  border-radius: 2px !important;
+}
+
+.sidebar ul[role="tablist"] .action-item {
+  width: 40px;
+  padding: 0px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+.sidebar ul[role="tablist"] .action-item.checked {
+  background-color: #ffffff12 !important;
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+  border-radius: 2px;
+  outline: 1px solid #00000020 !important;
+}
+.sidebar ul[role="tablist"] .action-label:before {
+  left: auto !important;
+}
+.sidebar ul[role="tablist"] .active-item-indicator {
+  display: none !important;
+}
+.sidebar ul[role="tablist"] {
+  margin-left: 16px !important;
+  justify-content: space-between;
+}
+
+.find-widget {
+  border-radius: 2px;
+  backdrop-filter: blur(10px);
+}
+.monaco-inputbox,
+.scm-editor {
+  border-radius: 2px !important;
+}
+.slider {
+  width: 6px !important;
+  border-radius: 2px;
+}
+.monaco-button-dropdown {
+  border-radius: 2px !important;
+}
+
+.context-view.monaco-menu-container {
+  border: 1px solid #ffffff09 !important;
+  border-radius: 2px !important;
+}
+.monaco-menu {
+  background: #202020bb !important;
+  backdrop-filter: blur(10px) !important;
+}
+.monaco-scrollable-element {
+  background-color: transparent !important;
+}
+.suggest-widget {
+  border-radius: 2px !important;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: 0 0 10px #00000030;
+}
+.suggest-widget .monaco-row {
+  border-radius: 2px !important;
+}
+
+.monaco-hover {
+  backdrop-filter: blur(3px);
+  border-radius: 2px !important;
+}
+
+#command-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .15);
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(8px);
+}
+
+/* --- --- Doc Popup Window --- --- */
+
+.monaco-editor .monaco-hover {
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+}
+
+
+/* --- --- IntelliSense Window --- --- */
+
+.monaco-editor .suggest-widget {
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  padding: 8px
+}

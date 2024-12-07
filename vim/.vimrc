@@ -35,7 +35,6 @@ highlight Visual ctermfg=DarkBlue
 let g:smoothie_experimental_mappings = 1
 let g:airline_powerline_fonts = 1
 
-
 " vim settings ______________________________________________________________________ 
 
 set autochdir
@@ -105,6 +104,3 @@ nmap <leader>g :FloatermNew --wintype=float --name=lazygit --autoclose=2 --cmd="
 nmap <leader>fv :vert term<CR><C-w>L
 tnoremap <silent> ;; <C-\><C-n>:FloatermToggle <CR>
 tnoremap <silent> <ESC><ESC> <C-\><C-n>
-
-" Extra
-source "~/.extra.vim"
