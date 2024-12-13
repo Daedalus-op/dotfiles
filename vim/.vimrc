@@ -37,6 +37,7 @@ let g:airline_powerline_fonts = 1
 
 " vim settings ______________________________________________________________________ 
 
+set guioptions-=m
 set autochdir
 set foldmethod=indent
 set ic 
@@ -79,7 +80,7 @@ map cp "+p
 map cp "+p
 
 	" NERDTree
-nmap <leader>e :NERDTreeToggle<CR>
+nmap <silent> <leader>e :NERDTreeToggle<CR>
 map <silent> <C-e> <ESC>:NERDTreeToggle<CR>
 
 	" Buffers

@@ -17,5 +17,5 @@ theme='style-15'
 ## Run
 rofi \
     -show drun \
-    -theme ${dir}/${theme}.rasi \
-    -normal-window -steal-focus
+    -theme ${dir}/${theme}.rasi
+    #-normal-window -steal-focus

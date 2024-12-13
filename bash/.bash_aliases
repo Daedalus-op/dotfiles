@@ -16,6 +16,7 @@ alias mntc="sudo mount /dev/nvme0n1p3 /mnt/c" # Mount C drive
 alias mntce="sudo mount /dev/nvme0n1p3 /mnt/c && exit" # Mount C drive and exit
 alias umntc="sudo umount /mnt/c" # Unmount C drive
 alias rofi="rofi -normal-window -steal-focus"
+alias powermenu="applet -r powermenu"
 
 ## movement
 alias ..="cd .."

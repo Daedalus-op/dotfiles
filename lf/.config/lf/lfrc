@@ -8,13 +8,13 @@ set sixel true
 set rulerfmt "%d  |%a  |%p  |\033[7;31m %m \033[0m  |\033[7;33m %c \033[0m  |\033[7;35m %s \033[0m  |\033[7;34m %f \033[0m  |%i/%t"
 
 # Custom Functions
-cmd mkdir ${{
+cmd mkdir %{{
   printf "Directory Name: "
   read ans
-  mkdir $ans
+  mkdir -p $ans
 }}
 
-cmd mkfile ${{
+cmd mkfile %{{
   printf "File Name: "
   read ans
   $EDITOR $ans
@@ -54,7 +54,7 @@ cmd trash ${{
 
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
-		text/*) lf -remote "send $id \$vim \$fx";;
+		text/*) lf -remote "send $id \$nvim \$fx";;
 		*) xdg-open "$f"
 	esac
 }}
@@ -108,6 +108,33 @@ cmd lfcd ${{
 }}
 map cd lfcd
 
+# Git Commands -------------------------
+cmd git_branch ${{
+    git branch | fzf | xargs git checkout
+    pwd_shell="$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id updir; cd \"$pwd_shell\""
+}}
+
+cmd on-cd &{{
+    # display repository status in your prompt
+    if [ -d .git ] || [ -f .git ]; then
+        branch="$(git branch --show-current 2>/dev/null)" || true
+        remote="$(git config --get "branch.$branch.remote" 2>/dev/null)" || true
+        url="$(git remote get-url "$remote" 2>/dev/null)" || true
+        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m [GIT BRANCH:> $branch >> $url]\033[0m"
+    elif [ -d .hg ]; then
+        hg="$(hg branch 2>/dev/null)" || true
+        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m [HG BRANCH:> $hg]\033[0m"
+    elif [ -d .svn ]; then
+        svn="$(svn info 2>/dev/null | awk '/^URL: /{print $2}')" || true
+        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m [SVN URL:> $svn]\033[0m"
+    else
+        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%d\033[0m\033[1m%f\033[0m"
+    fi
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+
+
 map Z push :z-jump<space>-I<space>
 map zb push :z-jump<space>-b<space>
 map zz push :z-jump<space>
@@ -117,12 +144,12 @@ map c
 map d
 map m
 map D
+map L
 
 map co $code "$f"
 map cf $dotbare fadd -f
 
 map au unarchive
-map ae $wine "$f"
 
 # Basic Functions
 map . set hidden!
@@ -143,9 +170,15 @@ map C clear
 # Movement
 map gc cd ~/.config
 map gD cd ~/Documents
+map ge cd ~/Desktop
 map gd cd ~/Downloads
 map gp cd ~/Pictures
-map gr cd ~/repos
-map gv cd ~/Videos
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files
+
+# Git
+map Lb :git_branch
+map Lp $clear; git pull --rebase || true; echo "press ENTER"; read ENTER
+map Ls ${{clear; git status; echo "press ENTER"; read ENTER}}
+map LL !{{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}
+map LG ${{clear; lazygit;}}

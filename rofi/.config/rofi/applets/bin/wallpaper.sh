@@ -20,7 +20,7 @@ rofi_cmd() {
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
-		-normal-window -steal-focus \
+		# -normal-window -steal-focus \
 		-i -selected-row 0
 }
 
@@ -41,9 +41,9 @@ chosen_cat=$(echo -e "$categories" | uniq -u | rofi_cmd  )
     if [[ -n "$wallpaper" ]]; then
 	wal -i "$HOME/.customise/Wallpapers/$chosen_cat/$wallpaper"
 	feh --bg-scale "$HOME/.customise/Wallpapers/$chosen_cat/$wallpaper"
-	sed -i "s|background_image.*|background_image ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.config/kitty/variables.conf
+	sed -i "s|background_image .*|background_image ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.config/kitty/variables.conf
 	sed -i "s|^    background-image:.*|    background-image:\t\t\turl(\"~/.customise/Wallpapers/$chosen_cat/$wallpaper\", height);|" ~/.config/rofi/applets/type-5/style.rasi 
-	sed -i "s|feh.*|feh --bg-scale ~/.customise/Wallpapers/$chosen_cat/$wallpaper\")|" $HOME/.config/awesome/rc.lua
+	sed -i "s|feh.*|feh --bg-scale ~/.customise/Wallpapers/$chosen_cat/$wallpaper|" $HOME/.shortcuts.sh
     else
       exit
     fi

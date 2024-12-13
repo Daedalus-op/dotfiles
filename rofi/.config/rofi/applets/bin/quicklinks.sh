@@ -63,7 +63,7 @@ rofi_cmd() {
 		-mesg "$mesg" \
 		-markup-rows \
 		-theme ${theme} \
-		-normal-window -steal-focus
+		# -normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu

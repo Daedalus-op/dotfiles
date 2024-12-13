@@ -50,7 +50,7 @@ rofi_cmd() {
 		-i \
 		-markup-rows \
 		-theme ${theme} \
-		-normal-window -steal-focus \
+		# -normal-window -steal-focus \
 		-matching fuzzy -location 0 $*
 }
 rofi_search() {
@@ -59,7 +59,7 @@ rofi_search() {
 		-i \
 		-markup-rows \
 		-theme ${theme} \
-		-normal-window -steal-focus \
+		# -normal-window -steal-focus \
 		-matching fuzzy -location 0 $*
 }
 

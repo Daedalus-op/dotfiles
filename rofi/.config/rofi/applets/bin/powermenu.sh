@@ -53,7 +53,7 @@ rofi_cmd() {
 		-mesg "$mesg" \
 		-markup-rows \
 		-theme ${theme} \
-		-normal-window -steal-focus
+		# -normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu
@@ -74,6 +74,12 @@ confirm_cmd() {
 		-theme ${theme} \
 		-normal-window -steal-focus
 }
+# sleep
+function sleep {
+	playerctl -a pause
+	systemctl suspend -i
+}
+
 
 # Ask for confirmation
 confirm_exit() {
@@ -98,7 +104,7 @@ run_cmd() {
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'kill -9 -1'
 	elif [[ "$1" == '--opt3' ]]; then
-		confirm_run 'systemctl suspend -i; playerctl -a pause'
+		confirm_run 'sleep'
 	elif [[ "$1" == '--opt4' ]]; then
 		confirm_run 'systemctl hibernate -i'
 	elif [[ "$1" == '--opt5' ]]; then

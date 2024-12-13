@@ -42,7 +42,7 @@ rofi_cmd() {
 		-markup-rows \
 		-theme ${theme} \
 		-selected-row 2 \
-		-normal-window -steal-focus
+		# -normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu
