@@ -28,6 +28,23 @@ function notes {
 	exit
 }
 
+function autostart {
+	if [ "$DESKTOP_SESSION" == "awesome" ]; then
+		cd ~/.files
+		git checkout clean 2>/dev/null
+		cd
+		copyq &
+		xinput set-prop 12 'libinput Tapping Enabled' 1
+		xinput set-prop 12 'libinput Natural Scrolling Enabled' 1
+		feh --bg-scale ~/.customise/Wallpapers/Scenery/Layer_Mountain.jpg
+		libinput-gestures-setup start
+	elif [[ "$DESKTOP_SESSION" == "ubuntu-wayland" ]]; then
+		cd ~/.files
+		git checkout master 2>/dev/null
+		cd
+	fi
+}
+
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty"
 export LANG=en_US.UTF-8
 export STARSHIP_CONFIG=~/.files/starship/.config/starship/pure.toml
