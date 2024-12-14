@@ -29,9 +29,13 @@ option_3=" Pause"
 option_4=" Stop"
 option_5="󰒮 Previous"
 option_6="󰒭 Next"
+option_7="  Increase Volume +10%"
+option_8="  Decrease Volume -10%"
+option_9="󰈆  Exit"
 
 #----------------------------------------------------------------------------------------------------
 
+action="nil"
 players=$(playerctl -l)
 echo $players
 
@@ -39,32 +43,43 @@ chosen_player=$(echo -e "$players" | rofi_cmd )
 echo $chosen_player
 
 if [[ -n "$chosen_player" ]]; then
-	action=$(echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd  )
+	while [[ $action != $option_7 || $action != "nil" ]]; do
+		action=$(echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd  )
 
-	if [[ -n "$action" ]]; then
-		case ${action} in
-			$option_1)
-				playerctl -p $chosen_player play-pause
-				;;
-			$option_2)
-				playerctl -p $chosen_player play
-				;;
-			$option_3)
-				playerctl -p $chosen_player pause
-				;;
-			$option_4)
-				playerctl -p $chosen_player stop
-				;;
-			$option_5)
-				playerctl -p $chosen_player previous
-				;;
-			$option_6)
-				playerctl -p $chosen_player next
-				;;
-		esac
-	else
-		exit
-	fi
+		if [[ -n "$action" ]]; then
+			case ${action} in
+				$option_1)
+					playerctl -p $chosen_player play-pause
+					;;
+				$option_2)
+					playerctl -p $chosen_player play
+					;;
+				$option_3)
+					playerctl -p $chosen_player pause
+					;;
+				$option_4)
+					playerctl -p $chosen_player stop
+					;;
+				$option_5)
+					playerctl -p $chosen_player previous
+					;;
+				$option_6)
+					playerctl -p $chosen_player next
+					;;
+				$option_7)
+					playerctl -p $chosen_player volume 0.10+
+					;;
+				$option_8)
+					playerctl -p $chosen_player volume 0.10-
+					;;
+				$option_9)
+					exit
+					;;
+			esac
+		else
+			exit
+		fi
+	done
 else
 	exit
 fi
