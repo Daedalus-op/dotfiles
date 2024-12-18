@@ -23,26 +23,9 @@ function notes {
 	cd ~/Desktop/Notes/sync
 	git pull
 	git add .
-	git commit -m"$( date '+%F') backup"
+	git commit -m"$(date '+%F') backup"
 	git push
 	exit
-}
-
-function autostart {
-	if [ "$DESKTOP_SESSION" == "awesome" ]; then
-		cd ~/.files
-		git checkout clean 2>/dev/null
-		cd
-		copyq &
-		xinput set-prop 12 'libinput Tapping Enabled' 1
-		xinput set-prop 12 'libinput Natural Scrolling Enabled' 1
-		libinput-gestures-setup start
-	elif [[ "$DESKTOP_SESSION" == "ubuntu-wayland" ]]; then
-		cd ~/.files
-		git checkout master 2>/dev/null
-		cd
-	fi
-	feh --bg-scale ~/.customise/Wallpapers/Scenery/Landscape.jpg
 }
 
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty"

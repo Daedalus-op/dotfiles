@@ -1,5 +1,5 @@
 configuration {
-	disable-history: false;
+  disable-history: false;
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";

@@ -77,6 +77,19 @@ cmd fzf_jump ${{
 }}
 map <c-f> :fzf_jump
 
+cmd broot_jump ${{
+    f=$(mktemp)
+    res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+    rm -f "$f"
+    if [ -f "$res" ]; then
+        cmd="select"
+    elif [ -d "$res" ]; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map <c-g> :broot_jump
+
 cmd fzf_search ${{
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
     res="$(
@@ -87,7 +100,7 @@ cmd fzf_search ${{
     )"
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
-map <c-g> :fzf_search
+# map <c-g> :fzf_search
 
 cmd z-jump ${{
   ZLUA_SCRIPT="$ZDOTDIR/plugins/z.lua/z.lua"
