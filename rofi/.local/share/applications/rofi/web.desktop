@@ -2,4 +2,4 @@
 Type=Application
 Exec=applet -r web
 Name=Web Search (Rofi)
-Icon=/home/xubundadu/.customise/LOGOs/multitool.png
+Icon=multitool

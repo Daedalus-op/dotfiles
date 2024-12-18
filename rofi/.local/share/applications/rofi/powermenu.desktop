@@ -2,4 +2,4 @@
 Type=Application
 Exec=applet -r powermenu
 Name=Power (Rofi)
-Icon=/home/xubundadu/.customise/LOGOs/multitool.png
+Icon=multitool
