@@ -7,6 +7,10 @@
 	```
 - sudo sysctl -p
 
+## Alternatively:
+- in /etc/default/grub
+- `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash ipv6.disable=1"`
+
 # Early EOF error git clone
 - git clone --depth=1 <link>
 - cd <repo>
@@ -30,3 +34,15 @@
 
 # Copy huge file to disk
 - `sudo bmaptool copy --nobmap <file_name>.wic /dev/<mount point>`
+
+# Upgrade distro
+- `sudo do-release-upgrade -d`
+- `lsb_release -a`
+
+# `tp_smapi/0.43` not behaving
+```
+sudo dkms remove tp_smapi/0.43 --all
+sudo dkms add tp_smapi/0.43
+sudo dkms build tp_smapi/0.43
+sudo dkms install tp_smapi/0.43
+```

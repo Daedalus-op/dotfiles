@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Comment=A RISCV visualiser/ emulator
+Exec=/home/xubundadu/AppImages/ripes.AppImage
+Icon=Ripes
+Name=Ripes
+Categories=Application;

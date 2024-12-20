@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=firefox --private-window
+Name=Firefox Private
+Icon=firefox
+Comment=Private stock* Firefox
+Categories=Application;Browser;Private

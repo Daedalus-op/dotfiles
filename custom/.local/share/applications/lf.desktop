@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Comment=File
+Exec=kitty -e lf
+Name=lf
+Icon=folder
+Categories=Application; Files

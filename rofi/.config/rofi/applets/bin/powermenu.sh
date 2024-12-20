@@ -99,9 +99,9 @@ confirm_run() {
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		playerctl -a pause
-		dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+		# dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+		betterlockscreen --blur 0.7 -l blur
 	elif [[ "$1" == '--opt2' ]]; then
-		betterlockscreen --blur 0.7 --lock blur
 		confirm_run 'kill -9 -1'
 	elif [[ "$1" == '--opt3' ]]; then
 		confirm_run 'sleep'
