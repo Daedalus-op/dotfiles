@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Comment=Note Taking Simplified
+Exec= /home/xubundadu/AppImages/Obsidian.AppImage
+Name=Obsidian
+Icon=Obsidian
+Categories=Application;Notes

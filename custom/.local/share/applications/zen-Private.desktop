@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=flatpak run io.github.zen_browser.zen --private-window
+Name=Zen Private
+Icon=zen-indigo
+Comment=Private Zen
+Categories=Application;Browser;Private
