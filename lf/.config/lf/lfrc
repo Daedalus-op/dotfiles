@@ -14,7 +14,7 @@ cmd mkdir %{{
   mkdir -p $ans
 }}
 
-cmd mkfile %{{
+cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans

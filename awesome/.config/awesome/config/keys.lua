@@ -83,16 +83,6 @@ local GLOBAL_GROUPS = {
 					description = "open apps",
 				},
 				{
-					key = "f",
-					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen" }),
-					description = "open zen browser",
-				},
-				{
-					key = "g",
-					action = bind(awful.spawn, { "firefox --private-window" }),
-					description = "open firefox with private window",
-				},
-				{
 					key = "e",
 					action = bind(awful.spawn, { "nautilus" }),
 					description = "open file manager",
@@ -153,6 +143,34 @@ local GLOBAL_GROUPS = {
 			},
 		},
 	},
+	browser = {
+		[mods.m] = {
+			[""] = {
+				{
+					key = "f",
+					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen" }),
+					description = "open zen browser",
+				},
+				{
+					key = "g",
+					action = bind(awful.spawn, { "firefox-esr" }),
+					description = "open firefox",
+				},
+			},
+			[mods.s] = {
+				{
+					key = "f",
+					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen --private-window" }),
+					description = "open zen browser with private window",
+				},
+				{
+					key = "g",
+					action = bind(awful.spawn, { "firefox-esr --private-window" }),
+					description = "open firefox with private window",
+				},
+			},
+		},
+	},
 	tag = {
 		[mods.a] = {
 			[""] = {
@@ -194,6 +212,16 @@ local GLOBAL_GROUPS = {
 			},
 			[mods.a] = {
 				{ key = "space", action = bind(awful.layout.inc, { -1 }), description = "select previous" },
+			},
+			[mods.s] = {
+				{
+					key = "s",
+					action = function()
+						local myscreen = awful.screen.focused()
+						myscreen.mywibox.visible = not myscreen.mywibox.visible
+					end,
+					description = "toggle statusbar",
+				},
 			},
 		},
 

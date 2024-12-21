@@ -3,6 +3,7 @@ alias kittup="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/std
 alias sai="sudo apt install" # apt update
 alias python="python3"
 alias code="codium"
+alias vim="nvim"
 
 ## cli
 alias glt="git log --oneline --graph" # Git commit graph
