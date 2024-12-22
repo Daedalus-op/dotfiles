@@ -41,6 +41,3 @@ require("config.keys")
 require("config.rules")
 require("config.signals")
 -- require("lockscreen.lockscreen")
-
-awful.util.shell = "sh"
-awful.spawn.with_shell(". ~/.autostart.sh")

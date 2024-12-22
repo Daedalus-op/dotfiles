@@ -12,9 +12,18 @@ local apps = require("lockscreen.apps")
 local utils = require("utils")
 local bind = utils.misc.bind
 
-local quake = lain.util.quake({
+local flt_terminal = lain.util.quake({
 	app = terminal,
 	argname = "--name %s",
+	vert = "center",
+	horiz = "center",
+	width = 0.7,
+	height = 0.7,
+})
+
+local flt_lf = lain.util.quake({
+	app = terminal,
+	argname = "--name %s -e lf",
 	vert = "center",
 	horiz = "center",
 	width = 0.7,
@@ -30,16 +39,16 @@ local GLOBAL_GROUPS = {
 			},
 			[mods.c] = {
 				{ key = "r", action = awesome.restart, description = "reload awesome" },
-				{ key = "q", action = awesome.quit, description = "quit awesome" },
+				{ key = "q", action = awesome.quit,    description = "quit awesome" },
 			},
 		},
 	},
 	client = {
 		[mods.a] = {
 			[""] = {
-				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }), description = "focus next index" },
+				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }),  description = "focus next index" },
 				{ key = "k", action = bind(awful.client.focus.byidx, { -1 }), description = "focus previous index" },
-				{ key = "u", action = awful.client.urgent.jumpto, description = "jump to urgent client" },
+				{ key = "u", action = awful.client.urgent.jumpto,             description = "jump to urgent client" },
 				{
 					key = "Tab",
 					action = function()
@@ -52,7 +61,7 @@ local GLOBAL_GROUPS = {
 				},
 			},
 			[mods.s] = {
-				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }), description = "swap next client" },
+				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }),  description = "swap next client" },
 				{ key = "k", action = bind(awful.client.swap.byidx, { -1 }), description = "swap previous client" },
 			},
 		},
@@ -63,7 +72,7 @@ local GLOBAL_GROUPS = {
 				{
 					key = "z",
 					action = function()
-						quake:toggle()
+						flt_terminal:toggle()
 					end,
 					description = "open floating terminal",
 				},
@@ -84,7 +93,10 @@ local GLOBAL_GROUPS = {
 				},
 				{
 					key = "e",
-					action = bind(awful.spawn, { "nautilus" }),
+					-- action = bind(awful.spawn, { "nautilus" }),
+					action = function()
+						flt_lf:toggle()
+					end,
 					description = "open file manager",
 				},
 				{
@@ -403,7 +415,7 @@ local function apply_mappings(groups)
 					end
 
 					ret[#ret + 1] =
-						awful.key(modkey, key.key, key.action, { description = key.description, group = group })
+							awful.key(modkey, key.key, key.action, { description = key.description, group = group })
 				end
 			end
 		end

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Comment=File
+GenericName=Terminal File Explorer
 Exec=kitty -e lf
 Name=lf
 Icon=folder

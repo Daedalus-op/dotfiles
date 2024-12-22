@@ -52,7 +52,7 @@ local pomodoroarc_widget = wibox.container.mirror(pomodoroarc, { horizontal = tr
 local update_graphic = function(widget, stdout, _, _, _)
 	local pomostatus = string.match(stdout, "  (%D?%D?):%D?%D?")
 	if pomostatus == "--" then
-		text.font = "Inconsolata Medium 10"
+		text.font = "FiraCode Nerd Font Medium 10"
 		widget.colors = { beautiful.widget_main_color }
 		text.text = ""
 		widget.value = 1

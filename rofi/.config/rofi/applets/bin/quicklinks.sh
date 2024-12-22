@@ -13,22 +13,22 @@ theme="$type/$style"
 prompt='Quick Links'
 mesg="Using '$BROWSER' as web browser"
 
-if [[ ( "$theme" == *'type-1'* ) || ( "$theme" == *'type-3'* ) || ( "$theme" == *'type-5'* ) ]]; then
+if [[ ("$theme" == *'type-1'*) || ("$theme" == *'type-3'*) || ("$theme" == *'type-5'*) ]]; then
 	list_col='1'
 	list_row='6'
-elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
+elif [[ ("$theme" == *'type-2'*) || ("$theme" == *'type-4'*) ]]; then
 	list_col='6'
 	list_row='1'
 fi
 
-if [[ ( "$theme" == *'type-1'* ) || ( "$theme" == *'type-5'* ) ]]; then
-	efonts="JetBrains Mono Nerd Font 10"
+if [[ ("$theme" == *'type-1'*) || ("$theme" == *'type-5'*) ]]; then
+	efonts="FiraCode Nerd Font 10"
 else
-	efonts="JetBrains Mono Nerd Font 28"
+	efonts="FiraCode Nerd Font 28"
 fi
 
 # Options
-layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
+layout=$(cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Google"
 	option_2=" Gmail"
@@ -62,8 +62,8 @@ rofi_cmd() {
 		-i -p "$prompt" \
 		-mesg "$mesg" \
 		-markup-rows \
-		-theme ${theme} \
-		# -normal-window -steal-focus
+		-theme ${theme}
+	# -normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu
@@ -108,34 +108,34 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
-		run_cmd --opt1
-        ;;
-    $option_2)
-		run_cmd --opt2
-        ;;
-    $option_3)
-		run_cmd --opt3
-        ;;
-    $option_4)
-		run_cmd --opt4
-        ;;
-    $option_5)
-		run_cmd --opt5
-        ;;
-    $option_6)
-		run_cmd --opt6
-        ;;
-    $option_7)
-		run_cmd --opt7
-        ;;
-    $option_8)
-		run_cmd --opt8
-        ;;
-    $option_9)
-		run_cmd --opt9
-        ;;
-    $option_10)
-		run_cmd --opt10
-        ;;
+$option_1)
+	run_cmd --opt1
+	;;
+$option_2)
+	run_cmd --opt2
+	;;
+$option_3)
+	run_cmd --opt3
+	;;
+$option_4)
+	run_cmd --opt4
+	;;
+$option_5)
+	run_cmd --opt5
+	;;
+$option_6)
+	run_cmd --opt6
+	;;
+$option_7)
+	run_cmd --opt7
+	;;
+$option_8)
+	run_cmd --opt8
+	;;
+$option_9)
+	run_cmd --opt9
+	;;
+$option_10)
+	run_cmd --opt10
+	;;
 esac

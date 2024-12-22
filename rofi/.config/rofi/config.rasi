@@ -27,5 +27,5 @@ configuration {
 }
 
 @theme "~/.config/rofi/blurry.theme.rasi"
-
+// @theme "~/.config/rofi/applets/type-5/style.rasi"
 /* vim: ft=sass

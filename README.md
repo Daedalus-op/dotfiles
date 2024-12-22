@@ -30,7 +30,7 @@ stow $folder_name
 - gtk-theme - Tokyonight
 - lf - Terminal file explorer
 
-## Extenstions
+## Extensions
 - Floating Dock
 - User themes
 
