@@ -59,6 +59,12 @@ cmd open &{{
 	esac
 }}
 
+cmd stow %{{
+    cd $HOME/.files
+    stow "$f"
+    echo "Module stowed"
+}}
+
 cmd on-select &{{
     lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
 }}
@@ -178,7 +184,9 @@ map R reload
 map mf mkfile
 map md mkdir
 map bg setwallpaper
+map s stow
 map C clear
+map <esc> quit
 
 # Movement
 map gc cd ~/.config

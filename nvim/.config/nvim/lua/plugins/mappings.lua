@@ -10,7 +10,8 @@ return {
           -- mappings seen under group name "Buffer"
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
           ["<Leader>s"] = { "<cmd>w<cr>", desc = "Save file" },
-          ["<Leader>w"] = { desc = "VimWiki" },
+          ["<Leader>e"] = { "<cmd>Lf<cr>", desc = "Explorer" },
+          -- ["<Leader>w"] = { desc = "VimWiki" },
           ["<Leader>bD"] = {
             function()
               require("astroui.status").heirline.buffer_picker(
@@ -27,6 +28,7 @@ return {
           -- this is useful for naming menus
           ["<Leader>b"] = { desc = "Buffers" },
           ["<Leader>pp"] = { '"+p', desc = "Clipboard Paste" },
+          ["<Leader>N"] = { "<cmd>Neorg<cr>", desc = "Neorg" },
           -- quick save
           -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         },
@@ -36,6 +38,7 @@ return {
         },
         v = {
           ["<Leader>y"] = { '"+y', desc = "Clipboard Yank" },
+          ["<Leader>p"] = { '"+p', desc = "Clipboard Paste" },
         },
       },
     },
