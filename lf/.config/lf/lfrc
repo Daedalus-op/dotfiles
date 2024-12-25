@@ -14,7 +14,7 @@ cmd mkdir %{{
   mkdir -p $ans
 }}
 
-cmd mkfile %{{
+cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans
@@ -57,6 +57,12 @@ cmd open &{{
 		text/*) lf -remote "send $id \$nvim \$fx";;
 		*) xdg-open "$f"
 	esac
+}}
+
+cmd stow %{{
+    cd $HOME/.files
+    stow "$f"
+    echo "Module stowed"
 }}
 
 cmd on-select &{{
@@ -178,7 +184,9 @@ map R reload
 map mf mkfile
 map md mkdir
 map bg setwallpaper
+map s stow
 map C clear
+map <esc> quit
 
 # Movement
 map gc cd ~/.config

@@ -14,6 +14,6 @@ return {
   { import = "astrocommunity.colorscheme.cyberdream-nvim" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim" },
   { import = "astrocommunity.scrolling.vim-smoothie" },
-  { import = "astrocommunity.markdown-and-latex.vimtex" },
   { import = "astrocommunity.note-taking.neorg" },
+  { import = "astrocommunity.markdown-and-latex.vimtex" },
 }

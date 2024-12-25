@@ -3,11 +3,12 @@
 call plug#begin()
 
 	" Component
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'voldikss/vim-floaterm'
 Plug 'vimwiki/vimwiki'
+Plug 'ptzz/lf.vim'
+Plug 'voldikss/vim-floaterm'
 
 	" Interactiions
 Plug 'psliwka/vim-smoothie'
@@ -37,6 +38,7 @@ let g:airline_powerline_fonts = 1
 
 " vim settings ______________________________________________________________________ 
 
+set guioptions-=m
 set autochdir
 set foldmethod=indent
 set ic 
@@ -53,6 +55,8 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 
+let g:NERDTreeHijackNetrw = 0 " Add this line if you use NERDTree
+let g:lf_replace_netrw = 1 " Open lf when vim opens a directory
 
 " vim-airline settings ______________________________________________________________________ 
 
@@ -78,9 +82,12 @@ vmap cy "+y
 map cp "+p
 map cp "+p
 
-	" NERDTree
-nmap <leader>e :NERDTreeToggle<CR>
-map <silent> <C-e> <ESC>:NERDTreeToggle<CR>
+	" NERDTree / Lf
+" nmap <silent> <leader>e :NERDTreeToggle<CR>
+" map <silent> <C-e> <ESC>:NERDTreeToggle<CR>
+let g:lf_map_keys = 0
+map <silent> <C-e> <ESC>:Lf<CR>
+nmap <silent> <leader>e :Lf<CR>
 
 	" Buffers
 nmap <leader>l :bn<CR>

@@ -5,6 +5,8 @@ return {
     vim.g.lf_netrw = 1
 
     require("lf").setup {
+      winblend = 0,
+      highlights = { NormalFloat = { guibg = "NONE" } },
       escape_quit = false,
       border = "rounded",
     }
