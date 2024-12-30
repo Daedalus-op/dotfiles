@@ -30,7 +30,8 @@ return {
           ["<Leader>pp"] = { '"+p', desc = "Clipboard Paste" },
           ["<Leader>N"] = { "<cmd>Neorg<cr>", desc = "Neorg" },
           -- quick save
-          -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+          -- ["<C-s>"] = { "<cmd>w!<cr>", desc = "Save File" },
+          ["<C-p>"] = { "<cmd>FuzzyOpen<cr>", desc = "Fuzzy Open" },
         },
         t = {
           -- setting a mapping to false will disable it

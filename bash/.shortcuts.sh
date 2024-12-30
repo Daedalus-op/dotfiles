@@ -1,8 +1,12 @@
-# starship
+# Shell inits
+## Starship
 eval "$(starship init bash)"
 
-# alias
-## updates and installs
+## Z lua script
+eval "$(lua ~/.files/z.lua --init bash enhanced once fzf)" # fzf tab completion
+
+# Functions
+## Updates and Installs
 function maintain {
 	echo "---Apt update------------------------------------------------------------------------------------------------------"
 	sudo apt update
@@ -17,8 +21,7 @@ function maintain {
 	echo "----------------------------------------------Maintain done--------------------------------------------------------"
 }
 
-# Functions
-## obsidian note sync
+## Obsidian Note Sync
 function notes {
 	cd ~/Desktop/Notes/sync
 	git pull
@@ -28,6 +31,7 @@ function notes {
 	exit
 }
 
+# Configs
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty"
 export LANG=en_US.UTF-8
 export STARSHIP_CONFIG=~/.files/starship/.config/starship/pure.toml

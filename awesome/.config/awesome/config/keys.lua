@@ -21,15 +21,6 @@ local flt_terminal = lain.util.quake({
 	height = 0.7,
 })
 
-local flt_lf = lain.util.quake({
-	app = terminal,
-	argname = "--name %s -e lf",
-	vert = "center",
-	horiz = "center",
-	width = 0.7,
-	height = 0.7,
-})
-
 local GLOBAL_GROUPS = {
 	awesome = {
 		[mods.m] = {
@@ -93,10 +84,7 @@ local GLOBAL_GROUPS = {
 				},
 				{
 					key = "e",
-					-- action = bind(awful.spawn, { "nautilus" }),
-					action = function()
-						flt_lf:toggle()
-					end,
+					action = bind(awful.spawn, { "x-terminal-emulator -e lf" }),
 					description = "open file manager",
 				},
 				{

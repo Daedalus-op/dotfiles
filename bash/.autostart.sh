@@ -13,4 +13,4 @@ elif [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
 	git checkout master 2>/dev/null
 	cd
 fi
-feh --bg-scale ~/.customise/Wallpapers/Scenery/Layer_Mountain.jpg
+source .fehbg
