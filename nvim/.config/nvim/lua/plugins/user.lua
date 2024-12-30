@@ -88,6 +88,9 @@ return {
     end,
   },
   -- ** DEFAULT SETTINGS; TO USE THESE, PASS NO ARGUMENTS TO THE SETUP FUNCTION **
+  require("notify").setup {
+    background_colour = "#000000",
+  },
   require("mkdnflow").setup {
     modules = {
       bib = true,
