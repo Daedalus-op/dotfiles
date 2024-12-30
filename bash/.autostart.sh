@@ -3,7 +3,7 @@ if [ "$DESKTOP_SESSION" == "awesome" ]; then
 	git checkout clean 2>/dev/null
 	cd
 	copyq &
-	# nm-applet &
+	nm-applet &
 	xinput set-prop 12 'libinput Tapping Enabled' 1
 	xinput set-prop 12 'libinput Natural Scrolling Enabled' 1
 	xinput set-prop 12 "libinput Scroll Method Enabled" 1 0 0

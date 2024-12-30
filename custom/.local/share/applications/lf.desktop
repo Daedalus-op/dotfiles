@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Comment=File
-Exec=kitty -e lf
+GenericName=Terminal File Explorer
+Exec=x-terminal-emulator -e lf
 Name=lf
 Icon=folder
 Categories=Application; Files

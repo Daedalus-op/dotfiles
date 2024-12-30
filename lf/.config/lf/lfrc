@@ -17,11 +17,8 @@ cmd mkdir %{{
 cmd mkfile ${{
   printf "File Name: "
   read ans
-  $EDITOR $ans
-}}
-
-cmd setwallpaper ${{
-    setwallpaper "$f"
+  touch $ans
+  # lf -remote "send $id \$nvim \$ansx"
 }}
 
 # Archive bindings
@@ -40,16 +37,20 @@ cmd unarchive ${{
 # Trash bindings
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
-  while [ "$files" ]; do
-    file=${files%%;*}
+  if [ "$PWD" = "${HOME}/.local/share/Trash/files" ]; then
+    echo "In the trash folder..., do rm"
+  else
+    while [ "$files" ]; do
+      file=${files%%;*}
 
-    trash-put "$(basename "$file")"
-    if [ "$files" = "$file" ]; then
-      files=''
-    else
-      files="${files#*;}"
-    fi
-  done
+      trash-put "$(basename "$file")"
+      if [ "$files" = "$file" ]; then
+        files=''
+      else
+        files="${files#*;}"
+      fi
+    done
+  fi
 }}
 
 cmd open &{{
@@ -94,7 +95,7 @@ cmd broot_jump ${{
     fi
     lf -remote "send $id $cmd \"$res\""
 }}
-map <c-g> :broot_jump
+map <c-b> :broot_jump
 
 cmd fzf_search ${{
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
@@ -106,26 +107,12 @@ cmd fzf_search ${{
     )"
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
-# map <c-g> :fzf_search
+map <c-g> :fzf_search
 
 cmd z-jump ${{
-  ZLUA_SCRIPT="$ZDOTDIR/plugins/z.lua/z.lua"
+  ZLUA_SCRIPT="$HOME/.files/z.lua"
   lf -remote "send ${id} cd \"$($ZLUA_SCRIPT -e $@ | sed 's/\\/\\\\/g;s/"/\\"/g')\""
 }}
-
-cmd lfcd ${{
-	LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
-	export LF_SHELLCD_TEMPDIR
-	lf -last-dir-path "$LF_SHELLCD_TEMPDIR/lastdir" \
-		-command "source '${XDG_CONFIG_HOME:-$HOME/.config}/lf-shellcd/lfrc-shellcd'" "$@"
-	if [ -e "$LF_SHELLCD_TEMPDIR/changecwd" ] && \
-		dir="$(cat "$LF_SHELLCD_TEMPDIR/lastdir")" 2>/dev/null; then
-		cd "$dir"
-	fi
-	rm -rf "$LF_SHELLCD_TEMPDIR"
-	unset LF_SHELLCD_TEMPDIR
-}}
-map cd lfcd
 
 # Git Commands -------------------------
 cmd git_branch ${{
@@ -173,9 +160,9 @@ map au unarchive
 # Basic Functions
 map . set hidden!
 map DD trash
-map u trash-restore -r 0
-map dr trash-restore
-map de trash-empty --all
+map u $trash-restore -r 0
+map dr $trash-restore
+map de $trash-empty --all
 map p paste
 map x cut
 map y copy
@@ -183,7 +170,6 @@ map <enter> open
 map R reload
 map mf mkfile
 map md mkdir
-map bg setwallpaper
 map s stow
 map C clear
 map <esc> quit
