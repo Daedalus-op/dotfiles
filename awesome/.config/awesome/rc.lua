@@ -41,3 +41,6 @@ require("config.keys")
 require("config.rules")
 require("config.signals")
 -- require("lockscreen.lockscreen")
+
+-- Implement screen mirroring
+awful.spawn.with_shell("/home/xubundadu/.screen_sharing.sh")

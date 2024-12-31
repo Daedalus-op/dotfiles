@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
 Exec=applet -r bluetooth
-Name=Bluetooth (BT) (Rofi)
+Name=Bluetooth (BT)
 Icon=multitool
+GenericName=Rofi Applet

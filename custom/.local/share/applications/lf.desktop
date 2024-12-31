@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
-GenericName=Terminal File Explorer
-Exec=kitty -e lf
 Name=lf
+Comment=Launches the lf file manager
 Icon=folder
-Categories=Application; Files
+Terminal=true
+Exec=lf
+Categories=ConsoleOnly;System;FileTools;FileManager
+MimeType=inode/directory;

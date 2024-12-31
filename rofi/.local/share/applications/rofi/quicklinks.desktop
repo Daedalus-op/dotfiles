@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
 Exec=applet -r quicklinks
-Name=Quicklinks (Rofi)
+Name=Quicklinks
 Icon=multitool
+GenericName=Rofi Applet

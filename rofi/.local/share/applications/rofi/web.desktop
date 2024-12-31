@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
 Exec=applet -r web
-Name=Web Search (Rofi)
+Name=Web Search
 Icon=multitool
+GenericName=Rofi Applet

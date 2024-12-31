@@ -34,6 +34,21 @@ cmd unarchive ${{
   esac
 }}
 
+cmd archive ${{ # need to use relative path instead of absolute
+  printf "Compression type: "
+  read type
+  echo $type
+  case "$type" in
+      zip) zip -r "$f.zip" "$f" ;;
+      rar) rar a "$f.rar" "$f" ;;
+      tar.gz) tar -czf "$f" ;;
+      tar.bz2) tar -cjvf "$f" ;;
+      tar) tar -cf "$f.tar" "$f" ;;
+      7z) 7z e "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
 # Trash bindings
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
@@ -114,23 +129,9 @@ cmd z-jump ${{
   lf -remote "send ${id} cd \"$($ZLUA_SCRIPT -e $@ | sed 's/\\/\\\\/g;s/"/\\"/g')\""
 }}
 
-cmd lfcd ${{
-	LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
-	export LF_SHELLCD_TEMPDIR
-	lf -last-dir-path "$LF_SHELLCD_TEMPDIR/lastdir" \
-		-command "source '${XDG_CONFIG_HOME:-$HOME/.config}/lf-shellcd/lfrc-shellcd'" "$@"
-	if [ -e "$LF_SHELLCD_TEMPDIR/changecwd" ] && \
-		dir="$(cat "$LF_SHELLCD_TEMPDIR/lastdir")" 2>/dev/null; then
-		cd "$dir"
-	fi
-	rm -rf "$LF_SHELLCD_TEMPDIR"
-	unset LF_SHELLCD_TEMPDIR
-}}
-map cd lfcd
-
 # Git Commands -------------------------
 cmd git_branch ${{
-    git branch | fzf | xargs git checkout
+    git branch -a | fzf | xargs git checkout
     pwd_shell="$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')"
     lf -remote "send $id updir; cd \"$pwd_shell\""
 }}
@@ -160,6 +161,7 @@ map zb push :z-jump<space>-b<space>
 map zz push :z-jump<space>
 
 # Bindings
+map e $nvim $f
 map c
 map d
 map m
@@ -170,11 +172,11 @@ map co $code "$f"
 map cf $dotbare fadd -f
 
 map au unarchive
+map aa archive
 
 # Basic Functions
 map . set hidden!
 map DD trash
-map u $trash-restore -r 0
 map dr $trash-restore
 map de $trash-empty --all
 map p paste

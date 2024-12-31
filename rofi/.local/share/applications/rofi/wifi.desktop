@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
 Exec=applet -r wifi
-Name=Wifi (Rofi)
+Name=Wifi
 Icon=multitool
+GenericName=Rofi Applet

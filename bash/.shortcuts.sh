@@ -6,14 +6,21 @@ eval "$(starship init bash)"
 eval "$(lua ~/.files/z.lua --init bash enhanced once fzf)" # fzf tab completion
 
 # Functions
+## LFCD
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+	source "$LFCD"
+fi
+bind '"\C-o":"lfcd\C-m"'
+
 ## Updates and Installs
 function maintain {
-	echo "---Apt update------------------------------------------------------------------------------------------------------"
-	sudo apt update
-	echo "---Apt upgrade------------------------------------------------------------------------------------------------------"
-	sudo apt upgrade
-	echo "---Apt autoremove------------------------------------------------------------------------------------------------------"
-	sudo apt autoremove
+	echo "---Aptitude update------------------------------------------------------------------------------------------------------"
+	sudo aptitude update
+	echo "---Aptitude upgrade------------------------------------------------------------------------------------------------------"
+	sudo aptitude upgrade
+	# echo "---Apt autoremove------------------------------------------------------------------------------------------------------"
+	# sudo apt autoremove
 	echo "---Flatpak update------------------------------------------------------------------------------------------------------"
 	flatpak update
 	echo "---Flatpak clean------------------------------------------------------------------------------------------------------"

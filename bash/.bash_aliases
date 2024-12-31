@@ -33,4 +33,6 @@ alias cdl2="cd ~/Vitis_Libraries/database/L2"
 alias cdl3="cd ~/Vitis_Libraries/database/L3"
 
 ## functions
-. ~/.shortcuts.sh
+if [ -f "$HOME/.shortcuts.sh" ]; then
+	. "$HOME/.shortcuts.sh"
+fi

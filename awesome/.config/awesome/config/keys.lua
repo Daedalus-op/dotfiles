@@ -30,16 +30,16 @@ local GLOBAL_GROUPS = {
 			},
 			[mods.c] = {
 				{ key = "r", action = awesome.restart, description = "reload awesome" },
-				{ key = "q", action = awesome.quit,    description = "quit awesome" },
+				{ key = "q", action = awesome.quit, description = "quit awesome" },
 			},
 		},
 	},
 	client = {
 		[mods.a] = {
 			[""] = {
-				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }),  description = "focus next index" },
+				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }), description = "focus next index" },
 				{ key = "k", action = bind(awful.client.focus.byidx, { -1 }), description = "focus previous index" },
-				{ key = "u", action = awful.client.urgent.jumpto,             description = "jump to urgent client" },
+				{ key = "u", action = awful.client.urgent.jumpto, description = "jump to urgent client" },
 				{
 					key = "Tab",
 					action = function()
@@ -52,7 +52,7 @@ local GLOBAL_GROUPS = {
 				},
 			},
 			[mods.s] = {
-				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }),  description = "swap next client" },
+				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }), description = "swap next client" },
 				{ key = "k", action = bind(awful.client.swap.byidx, { -1 }), description = "swap previous client" },
 			},
 		},
@@ -260,7 +260,7 @@ local GLOBAL_GROUPS = {
 				{
 					key = "l",
 					action = bind(awful.spawn, { "betterlockscreen --blur 0.7 --lock blur" }),
-					description = "Lock the screen",
+					description = "lock the screen",
 				},
 			},
 		},
@@ -403,7 +403,7 @@ local function apply_mappings(groups)
 					end
 
 					ret[#ret + 1] =
-							awful.key(modkey, key.key, key.action, { description = key.description, group = group })
+						awful.key(modkey, key.key, key.action, { description = key.description, group = group })
 				end
 			end
 		end

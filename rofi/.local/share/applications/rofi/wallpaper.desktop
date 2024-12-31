@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
 Exec=applet -r wallpaper
-Name=Wallpapers (Rofi)
+Name=Wallpapers
 Icon=multitool
+GenericName=Rofi Applet
