@@ -6,13 +6,6 @@ return {
 
   -- == Examples of Adding Plugins ==
 
-  "andweeb/presence.nvim",
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-
   -- == Examples of Overriding Plugins ==
 
   -- customize alpha options
@@ -46,6 +39,7 @@ return {
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "nvim-telescope/telescope-fzf-native.nvim", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
@@ -88,11 +82,21 @@ return {
     end,
   },
   -- ** DEFAULT SETTINGS; TO USE THESE, PASS NO ARGUMENTS TO THE SETUP FUNCTION **
-  -- require("vimtex").setup {
-  --   vimtex_view_method = "sioyek",
-  -- },
   require("notify").setup {
     background_colour = "#000000",
+  },
+  require("telescope").setup {
+    defaults = {
+      -- other default settings...
+      sorting_strategy = "ascending",
+      layout_strategy = "horizontal",
+      layout_config = {
+        horizontal = { mirror = false },
+        vertical = { mirror = false },
+      },
+      -- Set fzy as the sorter
+      sorter = require("telescope.sorters").fzy_sorter,
+    },
   },
   require("mkdnflow").setup {
     modules = {

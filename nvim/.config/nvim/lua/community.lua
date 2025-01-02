@@ -15,5 +15,8 @@ return {
   { import = "astrocommunity.colorscheme.kanagawa-nvim" },
   { import = "astrocommunity.scrolling.vim-smoothie" },
   { import = "astrocommunity.note-taking.neorg" },
+  { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  -- { import = "astrocommunity.editing-support.true-zen-nvim" },
+  { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.markdown-and-latex.vimtex" },
 }

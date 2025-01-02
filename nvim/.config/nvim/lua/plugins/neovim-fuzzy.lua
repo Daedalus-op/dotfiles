@@ -1,0 +1,3 @@
+return {
+  "cloudhead/neovim-fuzzy",
+}

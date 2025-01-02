@@ -21,16 +21,19 @@ return {
             desc = "Pick to close",
           },
           -- ZenMode
-          ["<Leader>zz"] = { "<cmd>ZenMode<cr><space>ul", desc = "ZenMode toggle" },
-          ["<Leader>zt"] = { "<cmd>Twilight<cr>", desc = "Twilight toggle" },
           ["<Leader>z"] = { desc = "ZenMode" },
+          ["<Leader>zz"] = { "<cmd>ZenMode<cr><Space>ul", desc = "ZenMode toggle" },
+          ["<Leader>zt"] = { "<cmd>Twilight<cr>", desc = "Twilight toggle" },
           -- tables with just a `desc` key will be registered with which-key if it's installed
-          -- this is useful for naming menus
           ["<Leader>b"] = { desc = "Buffers" },
+
           ["<Leader>pp"] = { '"+p', desc = "Clipboard Paste" },
+
           ["<Leader>N"] = { "<cmd>Neorg<cr>", desc = "Neorg" },
+
           -- quick save
-          -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+          -- ["<C-s>"] = { "<cmd>w!<cr>", desc = "Save File" },
+          ["<C-p>"] = { "<cmd>FuzzyOpen<cr>", desc = "Fuzzy Open" },
         },
         t = {
           -- setting a mapping to false will disable it
