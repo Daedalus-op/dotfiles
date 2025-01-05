@@ -11,7 +11,6 @@ return {
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
           ["<Leader>s"] = { "<cmd>w<cr>", desc = "Save file" },
           ["<Leader>e"] = { "<cmd>Lf<cr>", desc = "Explorer" },
-          -- ["<Leader>w"] = { desc = "VimWiki" },
           ["<Leader>bD"] = {
             function()
               require("astroui.status").heirline.buffer_picker(
@@ -20,20 +19,25 @@ return {
             end,
             desc = "Pick to close",
           },
+
           -- ZenMode
           ["<Leader>z"] = { desc = "ZenMode" },
-          ["<Leader>zz"] = { "<cmd>ZenMode<cr><Space>ul", desc = "ZenMode toggle" },
-          ["<Leader>zt"] = { "<cmd>Twilight<cr>", desc = "Twilight toggle" },
+          ["<Leader>zz"] = { "<cmd>ZenMode<cr>", desc = "ZenMode toggle" },
+
+          -- Marp Server
+          ["<Leader>m"] = { desc = "Marp" },
+          ["<Leader>mm"] = { "<cmd>MarpToggle<cr>", desc = "Marp Server Toggle" },
+          ["<Leader>mg"] = { "<cmd>MarpStatus<cr>", desc = "Marp Server Status" },
+          ["<Leader>ms"] = { "<cmd>MarpStart<cr>", desc = "Marp Server Start" },
+          ["<Leader>mt"] = { "<cmd>MarpStop<cr>", desc = "Marp Server Stop" },
+
           -- tables with just a `desc` key will be registered with which-key if it's installed
           ["<Leader>b"] = { desc = "Buffers" },
-
           ["<Leader>pp"] = { '"+p', desc = "Clipboard Paste" },
-
           ["<Leader>N"] = { "<cmd>Neorg<cr>", desc = "Neorg" },
 
           -- quick save
           -- ["<C-s>"] = { "<cmd>w!<cr>", desc = "Save File" },
-          ["<C-p>"] = { "<cmd>FuzzyOpen<cr>", desc = "Fuzzy Open" },
         },
         t = {
           -- setting a mapping to false will disable it

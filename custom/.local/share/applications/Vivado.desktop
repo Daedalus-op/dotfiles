@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/tools/Xilinx/Vivado/2022.2/bin/vivado
+Exec=/tools/Xilinx/Vivado/2024.2/bin/vivado
 Name=Vivado
 Icon=Vivado
 Comment=Vivado IDE

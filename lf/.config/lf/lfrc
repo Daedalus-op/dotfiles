@@ -14,7 +14,7 @@ cmd mkdir %{{
   mkdir -p $ans
 }}
 
-cmd mkfile ${{
+cmd mkfile %{{
   printf "File Name: "
   read ans
   touch $ans
@@ -30,6 +30,21 @@ cmd unarchive ${{
       *.tar.bz2) tar -xjvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
       *.7z) 7z e "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd archive ${{ # need to use relative path instead of absolute
+  printf "Compression type: "
+  read type
+  echo $type
+  case "$type" in
+      zip) zip -r "$f.zip" "$f" ;;
+      rar) rar a "$f.rar" "$f" ;;
+      tar.gz) tar -czf "$f" ;;
+      tar.bz2) tar -cjvf "$f" ;;
+      tar) tar -cf "$f.tar" "$f" ;;
+      7z) 7z e "$f" ;;
       *) echo "Unsupported format" ;;
   esac
 }}
@@ -60,7 +75,7 @@ cmd open &{{
 	esac
 }}
 
-cmd stow %{{
+cmd stow &{{
     cd $HOME/.files
     stow "$f"
     echo "Module stowed"
@@ -116,7 +131,7 @@ cmd z-jump ${{
 
 # Git Commands -------------------------
 cmd git_branch ${{
-    git branch | fzf | xargs git checkout
+    git branch -a | fzf | xargs git checkout
     pwd_shell="$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')"
     lf -remote "send $id updir; cd \"$pwd_shell\""
 }}
@@ -143,6 +158,7 @@ cmd on-cd &{{
 
 map Z push :z-jump<space>-I<space>
 map zb push :z-jump<space>-b<space>
+map zc push :z-jump<space>-c<space>
 map zz push :z-jump<space>
 
 # Bindings
@@ -151,16 +167,19 @@ map d
 map m
 map D
 map L
+map e !nvim $f
+map I !feh "$f" &
+map P !zathura "$f" &
 
 map co $code "$f"
 map cf $dotbare fadd -f
 
 map au unarchive
+map aa archive
 
 # Basic Functions
 map . set hidden!
 map DD trash
-map u $trash-restore -r 0
 map dr $trash-restore
 map de $trash-empty --all
 map p paste
@@ -182,6 +201,7 @@ map gd cd ~/Downloads
 map gp cd ~/Pictures
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files
+map gf cd ~/.files
 
 # Git
 map Lb :git_branch

@@ -3,8 +3,10 @@
     "file:///home/xubundadu/.config/VSCodium/User/chrome/custom-vscode.css",
     "file:///home/xubundadu/.config/VSCodium/User/chrome/vscode-script.js"
   ],
+  "markdown.marp.themes": [
+    "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/rose-pine.css"
+  ],
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Ocean High Contrast",
   "symbols.hidesExplorerArrows": true,
   "editor.fontFamily": "JetBrains Mono",
   "editor.formatOnSave": true,
@@ -39,7 +41,14 @@
     "<C-n>": false,
     "<C-e>": false,
     "<C-b>": false,
-    "<C-k>": false
+    "<C-k>": false,
+    // Handle specific keys
+    // Keep Ctrl+d for scrolling down
+    "<C-d>": true,
+    // Keep Ctrl+u for scrolling up
+    "<C-u>": true,
+    // Disable Ctrl+f to use VS Code's find instead
+    "<C-f>": false
   },
 
   "window.title": " ",
@@ -53,7 +62,168 @@
   "zenMode.showTabs": "single",
   "window.confirmBeforeClose": "keyboardOnly",
   "window.customTitleBarVisibility": "auto",
-  "window.newWindowProfile": "Default"
+  "window.newWindowProfile": "Default",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Wallace Corporation",
+
+  // Vim Configuration
+  // Enable easymotion plugin for quick navigation
+  "vim.easymotion": true,
+  // Enable incremental search highlighting
+  "vim.incsearch": true,
+  // Use system clipboard for vim operations
+  "vim.useSystemClipboard": true,
+  // Enable Ctrl key combinations
+  "vim.useCtrlKeys": true,
+  // Enable search highlight
+  "vim.hlsearch": true,
+  // Set space as the leader key
+  "vim.leader": " ",
+  // Enable vim-sneak plugin for improved motion
+  "vim.sneak": true,
+  "vim.smartRelativeLine": true,
+  // Fix common fold-related issues
+  "vim.foldfix": true,
+  // Enable and configure yank highlighting
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  // Customize search highlight color
+  // "vim.searchHighlightColor": "rgba(180, 142, 173, 0.5)",
+  // Don't start on the first line of a file
+  "vim.startup.firstline": false,
+
+  // #TODO: experimenting with those
+  // Status Line Integration
+  // Enable status bar color control based on Vim mode
+  "vim.statusBarColorControl": false,
+
+  // Insert Mode Keybindings
+  "vim.insertModeKeyBindings": [
+    { // Exit insert mode by pressing 'j' twice quickly
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  // Normal Mode Keybindings
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Basic Operations
+
+    { // Clear search highlighting with Ctrl+n
+      "before": ["<leader>", "t"],
+      "commands": ["multiCommand.toggleMaximizedPanelAndFocusTerminal"]
+    },
+    { // Clear search highlighting with Ctrl+n
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    { // Insert line break above cursor with K
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    },
+    // Window Management
+    { // Split editor with leader+w
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    { // Save current file with leader+w+w
+      "before": ["<leader>", "w", "w"],
+      "commands": [":w"]
+    },
+    { // Close current file with leader+w+c
+      "before": ["<leader>", "w", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    // Sidebar and Explorer
+    { // Toggle sidebar and focus explorer with leader+e
+      "before": ["<leader>", "e"],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+        // "workbench.files.action.focusFilesExplorer" // #TODO: dosent work as expected
+      ]
+    },
+    { // Reveal current file in explorer with leader+f
+      "before": ["<leader>", "f"],
+      "commands": ["revealInExplorer"]
+    },
+    // File Operations
+    { // Copy current file path with leader+f+y
+      "before": ["<leader>", "f", "y"],
+      "commands": ["copyFilePath"]
+    },
+    { // Create new file in current directory with leader+f+n
+      "before": ["<leader>", "f", "n"],
+      "commands": ["explorer.newFile"]
+    },
+    // Code Actions
+    { // Toggle line comment with leader+/
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    }
+    // #TODO: confirm the following
+    // {
+    //   // Rename symbol with leader+r+e
+    //   "before": [
+    //     "<leader>",
+    //     "r",
+    //     "e"
+    //   ],
+    //   "commands": [
+    //     "editor.action.rename"
+    //   ]
+    // },
+    // {
+    //   // Rename file with leader+r+f
+    //   "before": [
+    //     "<leader>",
+    //     "r",
+    //     "f"
+    //   ],
+    //   "commands": [
+    //     "fileutils.renameFile"
+    //   ]
+    // }
+  ],
+  // Visual Mode Keybindings
+  "vim.visualModeKeyBindings": [
+    { // Comment selected lines and exit visual mode with leader+/
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine", "extension.vim_escape"]
+    },
+    { // Select all occurrences of current selection with leader+a
+      "before": ["<leader>", "a"],
+      "commands": ["editor.action.selectHighlights"]
+    },
+    { // Sort selected lines
+      "before": ["<leader>", "s", "s"],
+      "commands": ["editor.action.sortLinesAscending"]
+    },
+    { // Transform to uppercase
+      "before": ["<leader>", "u"],
+      "commands": ["editor.action.transformToUppercase"]
+    },
+    { // Transform to lowercase
+      "before": ["<leader>", "l"],
+      "commands": ["editor.action.transformToLowercase"]
+    }
+  ],
+  // Multi-command Configuration
+  "multiCommand.commands": [
+    { // Toggle maximized terminal panel and focus terminal
+      "command": "multiCommand.toggleMaximizedPanelAndFocusTerminal",
+      "sequence": [
+        "workbench.action.toggleMaximizedPanel",
+        "workbench.action.terminal.focus"
+      ]
+    },
+    { // Create new terminal and focus it
+      "command": "multiCommand.newTerminalAndFocus",
+      "sequence": [
+        "workbench.action.terminal.new",
+        "workbench.action.terminal.focus"
+      ]
+    }
+  ]
   // The keybinds
   //
   // <C-b> toggle primary side bar

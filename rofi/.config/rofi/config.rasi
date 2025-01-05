@@ -21,7 +21,7 @@ configuration {
 /*	dpi: -1;*/
 
 	/*---------- Matching setting ----------*/
-	matching: "normal";
+  matching: "fuzzy";
 	tokenize: true;
 
 	/*---------- SSH settings ----------*/
@@ -48,8 +48,8 @@ configuration {
 	/*---------- Run settings ----------*/
 	run-command: "{cmd}";
 	run-list-command: "";
-	run-shell-command: "gnome-terminal -- sh -c '. ~/.bashrc; {cmd}; exec bash;'";
-	/*run-shell-command: "{terminal} --hold sh -c {cmd}";*/
+	// run-shell-command: "{terminal} -- sh -c '. ~/.bashrc; {cmd}; exec bash;'";
+	run-shell-command: "{terminal} --hold sh -c {cmd}";
 
 	/*---------- Fallback Icon ----------*/
 	run,drun {
@@ -69,7 +69,7 @@ configuration {
 
 	/*---------- History and Sorting ----------*/
 	disable-history: false;
-	sorting-method: "normal";
+	sorting-method: "fzf";
 	max-history-size: 25;
 
 	/*---------- Display setting ----------*/
@@ -83,9 +83,9 @@ configuration {
 	display-filebrowser: "Files";
 
 	/*---------- Misc setting ----------*/
-	terminal: "rofi-sensible-terminal";
+	terminal: "kitty";
 	font: "Mono 12";
-	sort: false;
+	sort: true;
 	threads: 0;
 	click-to-exit: true;
 /*	ignored-prefixes: "";*/
@@ -93,7 +93,7 @@ configuration {
 
 	/*---------- File browser settings ----------*/
     filebrowser {
-/*	  directory: "/home";*/
+	    directory: "/home/xubundadu";
       directories-first: true;
       sorting-method:    "name";
     }
