@@ -30,16 +30,16 @@ local GLOBAL_GROUPS = {
 			},
 			[mods.c] = {
 				{ key = "r", action = awesome.restart, description = "reload awesome" },
-				{ key = "q", action = awesome.quit, description = "quit awesome" },
+				{ key = "q", action = awesome.quit,    description = "quit awesome" },
 			},
 		},
 	},
 	client = {
 		[mods.a] = {
 			[""] = {
-				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }), description = "focus next index" },
+				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }),  description = "focus next index" },
 				{ key = "k", action = bind(awful.client.focus.byidx, { -1 }), description = "focus previous index" },
-				{ key = "u", action = awful.client.urgent.jumpto, description = "jump to urgent client" },
+				{ key = "u", action = awful.client.urgent.jumpto,             description = "jump to urgent client" },
 				{
 					key = "Tab",
 					action = function()
@@ -52,7 +52,7 @@ local GLOBAL_GROUPS = {
 				},
 			},
 			[mods.s] = {
-				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }), description = "swap next client" },
+				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }),  description = "swap next client" },
 				{ key = "k", action = bind(awful.client.swap.byidx, { -1 }), description = "swap previous client" },
 			},
 		},
@@ -148,7 +148,7 @@ local GLOBAL_GROUPS = {
 			[""] = {
 				{
 					key = "f",
-					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen" }),
+					action = bind(awful.spawn, { "flatpak run app.zen_browser.zen" }),
 					description = "open zen browser",
 				},
 				{
@@ -160,7 +160,7 @@ local GLOBAL_GROUPS = {
 			[mods.s] = {
 				{
 					key = "f",
-					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen --private-window" }),
+					action = bind(awful.spawn, { "flatpak run app.zen_browser.zen --private-window" }),
 					description = "open zen browser with private window",
 				},
 				{
@@ -317,6 +317,12 @@ local GLOBAL_GROUPS = {
 					action = bind(awful.spawn, { "playerctl stop" }),
 					description = "player stop",
 				},
+				-- Display
+				{
+					key = "XF86Calculator",
+					action = bind(awful.spawn, { "applet -r display" }),
+					description = "multi display modes",
+				},
 			},
 		},
 	},
@@ -403,7 +409,7 @@ local function apply_mappings(groups)
 					end
 
 					ret[#ret + 1] =
-						awful.key(modkey, key.key, key.action, { description = key.description, group = group })
+							awful.key(modkey, key.key, key.action, { description = key.description, group = group })
 				end
 			end
 		end

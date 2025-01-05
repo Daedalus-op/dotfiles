@@ -3,6 +3,9 @@
     "file:///home/xubundadu/.config/VSCodium/User/chrome/custom-vscode.css",
     "file:///home/xubundadu/.config/VSCodium/User/chrome/vscode-script.js"
   ],
+  "markdown.marp.themes": [
+    "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/rose-pine.css"
+  ],
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Material Theme Ocean High Contrast",
   "symbols.hidesExplorerArrows": true,
