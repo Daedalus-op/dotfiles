@@ -141,16 +141,16 @@ awful.screen.connect_for_each_screen(function(s)
 					layout = wibox.layout.fixed.horizontal,
 					spacing = beautiful.spacing,
 					wrap_bg(s.mytaglist),
-					wrap_bg(pom),
+					wrap_bg(s.mylayoutbox),
 				},
 				nil,
 				{ -- Right widgets
 					layout = wibox.layout.fixed.horizontal,
 					spacing = beautiful.spacing,
-					wrap_bg(s.mylayoutbox),
 					wrap_bg(wibox.widget.systray()),
 					wrap_bg({
 						layout = wibox.layout.fixed.horizontal,
+						pom,
 						my_volume,
 						my_widgets.battery(),
 					}, { widget_spacing = beautiful.spacing_lg }),

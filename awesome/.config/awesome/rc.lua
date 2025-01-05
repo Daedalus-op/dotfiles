@@ -5,7 +5,7 @@ local naughty = require("naughty")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local awful = require("awful")
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 if awesome.startup_errors then
@@ -41,6 +41,3 @@ require("config.keys")
 require("config.rules")
 require("config.signals")
 -- require("lockscreen.lockscreen")
-
--- Implement screen mirroring
-awful.spawn.with_shell("/home/xubundadu/.screen_sharing.sh")
