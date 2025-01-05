@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#set polite on
+kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
 
 # Get the file type
 MIME=$(file --mime-type -b "$1")
@@ -8,6 +8,11 @@ w=$2
 h=$3
 x=$4
 y=$5
+
+# Rescale the image
+w=$(( w * 99 / 100 ))
+h=$(( h * 99 / 100 ))
+y=$(( y + 1 ))
 
 # Preview based on MIME type
 case "$MIME" in
@@ -25,10 +30,11 @@ case "$MIME" in
         ;;
     # Images (using chafa for terminal previews)
     image/*)
-		set polite on
+		# set polite on
 		# chafa "$1"
-		chafa -f kitty --animate off --polite on "$1"
+		# chafa -f kitty --animate off --polite on "$1"
 		# kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" < /dev/null > /dev/tty
+        kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
         ;;
     # Default case for unknown types
     *)

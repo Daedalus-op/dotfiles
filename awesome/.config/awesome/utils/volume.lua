@@ -6,7 +6,7 @@ return function()
 	local noti_obj = nil
 
 	local cmd_set = "amixer -D pulse sset Master"
-	local cmd_get = "amixer -D pulse sget Master"
+	local cmd_get = "amixer sget Master"
 	local cmd_inc = cmd_set .. " 5%+"
 	local cmd_dec = cmd_set .. " 5%-"
 	local cmd_toggle = cmd_set .. " toggle"
@@ -37,7 +37,7 @@ return function()
 	end
 
 	return {
-    get_level = get_level,
+		get_level = get_level,
 		increase = function()
 			action(cmd_inc)
 		end,

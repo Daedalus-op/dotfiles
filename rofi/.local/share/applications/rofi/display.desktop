@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=applet -r display
+Name=Multi Display
+Icon=multitool
+GenericName=Rofi Applet

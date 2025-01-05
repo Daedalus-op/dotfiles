@@ -54,7 +54,7 @@ imagebox {
     border-color:                @selected;
     background-color:            transparent;
     /*background-image:            url("~/.config/rofi/images/g.png", height);*/
-    background-image:			url("~/.customise/Wallpapers/Scenery/japan-plain-sunrise.jpg", height);
+    background-image:			url("~/.customise/Wallpapers/Scenery/Pink_mountains.jpg", height);
 	children:                    [ "dummy", "inputbar", "dummy"];
 }
 

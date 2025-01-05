@@ -13,7 +13,7 @@ wallpaper_cmd="feh --bg-fill"
 quiet=false
 
 # default theme
-loginbox=00000066
+loginbox=00000000
 loginshadow=00000000
 locktext="Welcome Back"
 font="JetBrainsMono Nerd Font"

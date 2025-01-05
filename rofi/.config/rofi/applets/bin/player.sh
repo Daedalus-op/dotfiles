@@ -4,10 +4,10 @@ source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
 # Theme Elements
-if [[ ( "$theme" == *'type-1'* ) || ( "$theme" == *'type-3'* ) || ( "$theme" == *'type-5'* ) ]]; then
+if [[ ("$theme" == *'type-1'*) || ("$theme" == *'type-3'*) || ("$theme" == *'type-5'*) ]]; then
 	list_col='1'
 	list_row='6'
-elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
+elif [[ ("$theme" == *'type-2'*) || ("$theme" == *'type-4'*) ]]; then
 	list_col='6'
 	list_row='1'
 fi
@@ -19,8 +19,8 @@ rofi_cmd() {
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
-		# -normal-window -steal-focus \
 		-i -selected-row 0
+	# -normal-window -steal-focus \
 }
 
 option_1="󰐎 Toggle"
@@ -39,42 +39,42 @@ action="nil"
 players=$(playerctl -l)
 echo $players
 
-chosen_player=$(echo -e "$players" | rofi_cmd )
+chosen_player=$(echo -e "$players" | rofi_cmd)
 echo $chosen_player
 
 if [[ -n "$chosen_player" ]]; then
 	while [[ $action != $option_7 || $action != "nil" ]]; do
-		action=$(echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd  )
+		action=$(echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd)
 
 		if [[ -n "$action" ]]; then
 			case ${action} in
-				$option_1)
-					playerctl -p $chosen_player play-pause
-					;;
-				$option_2)
-					playerctl -p $chosen_player play
-					;;
-				$option_3)
-					playerctl -p $chosen_player pause
-					;;
-				$option_4)
-					playerctl -p $chosen_player stop
-					;;
-				$option_5)
-					playerctl -p $chosen_player previous
-					;;
-				$option_6)
-					playerctl -p $chosen_player next
-					;;
-				$option_7)
-					playerctl -p $chosen_player volume 0.10+
-					;;
-				$option_8)
-					playerctl -p $chosen_player volume 0.10-
-					;;
-				$option_9)
-					exit
-					;;
+			$option_1)
+				playerctl -p $chosen_player play-pause
+				;;
+			$option_2)
+				playerctl -p $chosen_player play
+				;;
+			$option_3)
+				playerctl -p $chosen_player pause
+				;;
+			$option_4)
+				playerctl -p $chosen_player stop
+				;;
+			$option_5)
+				playerctl -p $chosen_player previous
+				;;
+			$option_6)
+				playerctl -p $chosen_player next
+				;;
+			$option_7)
+				playerctl -p $chosen_player volume 0.10+
+				;;
+			$option_8)
+				playerctl -p $chosen_player volume 0.10-
+				;;
+			$option_9)
+				exit
+				;;
 			esac
 		else
 			exit

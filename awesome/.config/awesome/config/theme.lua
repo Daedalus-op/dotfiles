@@ -26,6 +26,8 @@ local utils = require("utils")
 
 local theme = {}
 
+theme.icon_theme = "Papirus"
+
 theme.transparent = "#00000000"
 theme.font = "JetBrains Mono Nerd Font Bold 12"
 
@@ -68,7 +70,7 @@ theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_fg_occupied = wal_colors[5] -- theme.green
 
 -- wallpaper
-theme.wallpaper = gears.surface.load_uncached(constants.wallpapers .. "fuji.jpg")
+theme.wallpaper = gears.surface.load_uncached(constants.wallpapers .. "Pink_mountains.jpg")
 
 -- bar
 theme.bar_height = dpi(50)

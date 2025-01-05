@@ -6,6 +6,11 @@ local lain = require("lain")
 local constants = require("constants")
 local mods = constants.mods
 local terminal = constants.terminal
+local browser = constants.browser
+local browser_alt = constants.browser_alt
+local term_fm = constants.term_fm
+local fm = constants.fm
+local editor_cmd = constants.editor_cmd
 local apps = require("lockscreen.apps")
 -- local pomodoro = require("awmodoro.config")
 
@@ -26,20 +31,19 @@ local GLOBAL_GROUPS = {
 		[mods.m] = {
 			[""] = {
 				{ key = "s", action = hotkeys_popup.show_help, description = "show help" },
-				-- { key = "l", action = awful.spawn(apps.default.lock, false), description = "lock screen" }, TODO: Fix locksreen
 			},
 			[mods.c] = {
 				{ key = "r", action = awesome.restart, description = "reload awesome" },
-				{ key = "q", action = awesome.quit, description = "quit awesome" },
+				{ key = "q", action = awesome.quit,    description = "quit awesome" },
 			},
 		},
 	},
 	client = {
 		[mods.a] = {
 			[""] = {
-				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }), description = "focus next index" },
+				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }),  description = "focus next index" },
 				{ key = "k", action = bind(awful.client.focus.byidx, { -1 }), description = "focus previous index" },
-				{ key = "u", action = awful.client.urgent.jumpto, description = "jump to urgent client" },
+				{ key = "u", action = awful.client.urgent.jumpto,             description = "jump to urgent client" },
 				{
 					key = "Tab",
 					action = function()
@@ -52,7 +56,7 @@ local GLOBAL_GROUPS = {
 				},
 			},
 			[mods.s] = {
-				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }), description = "swap next client" },
+				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }),  description = "swap next client" },
 				{ key = "k", action = bind(awful.client.swap.byidx, { -1 }), description = "swap previous client" },
 			},
 		},
@@ -84,13 +88,20 @@ local GLOBAL_GROUPS = {
 				},
 				{
 					key = "e",
-					action = bind(awful.spawn, { "x-terminal-emulator -e lf" }),
-					description = "open file manager",
+					action = bind(awful.spawn, { terminal .. " -e " .. term_fm }),
+					description = "open terminal file manager",
 				},
 				{
 					key = "c",
 					action = bind(awful.spawn, { "codium" }),
 					description = "open codium",
+				},
+			},
+			[mods.s] = {
+				{
+					key = "e",
+					action = bind(awful.spawn, { fm }),
+					description = "open file manager",
 				},
 			},
 		},
@@ -118,7 +129,7 @@ local GLOBAL_GROUPS = {
 				},
 				{
 					key = "e",
-					action = bind(awful.spawn, { "kitty -e nvim" }),
+					action = bind(awful.spawn, { editor_cmd }),
 					description = "open nvim",
 				},
 				-- { TODO: Add pomodoro timer
@@ -147,26 +158,26 @@ local GLOBAL_GROUPS = {
 		[mods.m] = {
 			[""] = {
 				{
-					key = "f",
-					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen" }),
-					description = "open zen browser",
+					key = "w",
+					action = bind(awful.spawn, { browser }),
+					description = "open browser",
 				},
 				{
 					key = "g",
-					action = bind(awful.spawn, { "firefox-esr" }),
-					description = "open firefox",
+					action = bind(awful.spawn, { browser_alt }),
+					description = "open alternate browser",
 				},
 			},
 			[mods.s] = {
 				{
-					key = "f",
-					action = bind(awful.spawn, { "flatpak run io.github.zen_browser.zen --private-window" }),
-					description = "open zen browser with private window",
+					key = "w",
+					action = bind(awful.spawn, { browser .. " --private-window" }),
+					description = "open browser with private window",
 				},
 				{
 					key = "g",
-					action = bind(awful.spawn, { "firefox-esr --private-window" }),
-					description = "open firefox with private window",
+					action = bind(awful.spawn, { browser_alt .. " --private-window" }),
+					description = "open alternate browser with private window",
 				},
 			},
 		},
@@ -254,7 +265,17 @@ local GLOBAL_GROUPS = {
 	others = {
 		[mods.m] = {
 			[""] = {
-				{ key = "i", action = utils.ibus.toggle, description = "switch input engine" },
+				{
+					key = "i",
+					action = utils.ibus.toggle,
+					description = "switch input engine",
+				},
+				{
+					key = "l",
+					action = bind(awful.spawn, { apps.default.lock, true }),
+					description = "lock screen",
+				}, -- TODO: Fix locksreen
+				--				awful.spawn(apps.default.lock, false)
 			},
 			[mods.s] = {
 				{
@@ -317,6 +338,17 @@ local GLOBAL_GROUPS = {
 					action = bind(awful.spawn, { "playerctl stop" }),
 					description = "player stop",
 				},
+				-- Display
+				{
+					key = "XF86Calculator",
+					action = bind(awful.spawn, { "applet -r display" }),
+					description = "multi display modes",
+				},
+				{
+					key = "XF86AudioMicMute",
+					action = bind(awful.spawn, { "/home/xubundadu/.mic.sh" }),
+					description = "toggle mic",
+				},
 			},
 		},
 	},
@@ -351,6 +383,14 @@ local CLIENT_GROUPS = {
 					key = "m",
 					action = function(c)
 						c.maximized = not c.maximized
+						c:raise()
+					end,
+					description = "toggle maximize",
+				},
+				{
+					key = "f",
+					action = function(c)
+						c.fullscreen = not c.fullscreen
 						c:raise()
 					end,
 					description = "toggle maximize",
@@ -403,7 +443,7 @@ local function apply_mappings(groups)
 					end
 
 					ret[#ret + 1] =
-						awful.key(modkey, key.key, key.action, { description = key.description, group = group })
+							awful.key(modkey, key.key, key.action, { description = key.description, group = group })
 				end
 			end
 		end

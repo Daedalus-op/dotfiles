@@ -4,13 +4,13 @@ source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
 # Theme Elements
-prompt="`hostname`"
-mesg="Uptime : `uptime -p | sed -e 's/up //g'`"
+prompt="$(hostname)"
+mesg="Uptime : $(uptime -p | sed -e 's/up //g')"
 
-if [[ ( "$theme" == *'type-1'* ) || ( "$theme" == *'type-3'* ) || ( "$theme" == *'type-5'* ) ]]; then
+if [[ ("$theme" == *'type-1'*) || ("$theme" == *'type-3'*) || ("$theme" == *'type-5'*) ]]; then
 	list_col='1'
 	list_row='6'
-elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
+elif [[ ("$theme" == *'type-2'*) || ("$theme" == *'type-4'*) ]]; then
 	list_col='6'
 	list_row='1'
 fi
@@ -24,10 +24,9 @@ rofi_cmd() {
 		-mesg "$mesg" \
 		-markup-rows \
 		-theme ${theme} \
-		# -normal-window -steal-focus \
 		-i -selected-row 1
+	# -normal-window -steal-focus \
 }
-
 
 #----------------------------------------------------------------------------------------------------
 
@@ -42,9 +41,9 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi_cmd  )
+chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi_cmd)
 # Get name of connection
-read -r chosen_id <<< "${chosen_network:3}"
+read -r chosen_id <<<"${chosen_network:3}"
 
 if [ "$chosen_network" = "" ]; then
 	exit
@@ -54,22 +53,23 @@ elif [ "$chosen_network" = "󰖪  Disable Wi-Fi" ]; then
 	nmcli radio wifi off
 else
 	# Message to show when connection is activated successfully
-  	success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
+	success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
 	# Get saved connections
 	saved_connections=$(nmcli -g NAME connection)
 	if [[ $(echo "$saved_connections" | grep -w "$chosen_id") = "$chosen_id" ]]; then
 		nmcli connection up id "$chosen_id" | grep "successfully" && notify-send "Connection Established" "$success_message"
 	else
 		if [[ "$chosen_network" =~ "" ]]; then
-			wifi_password=$( rofi \
-						-theme-str 'textbox-prompt-colon {str: "";}' \
-						-theme-str 'entry {placeholder: "Power";}' \
-						-dmenu \
-						-p "Password: " \
-						-theme ${theme} \
-						-normal-window -steal-focus 
+			wifi_password=$(
+				rofi \
+					-theme-str 'textbox-prompt-colon {str: "";}' \
+					-theme-str 'entry {placeholder: "Power";}' \
+					-dmenu \
+					-p "Password: " \
+					-theme ${theme} \
+					-normal-window -steal-focus
 			)
 		fi
 		nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$success_message"
-    fi
+	fi
 fi

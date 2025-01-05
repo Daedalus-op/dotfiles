@@ -14,7 +14,7 @@ cmd mkdir %{{
   mkdir -p $ans
 }}
 
-cmd mkfile ${{
+cmd mkfile %{{
   printf "File Name: "
   read ans
   touch $ans
@@ -75,7 +75,7 @@ cmd open &{{
 	esac
 }}
 
-cmd stow %{{
+cmd stow &{{
     cd $HOME/.files
     stow "$f"
     echo "Module stowed"
@@ -158,17 +158,20 @@ cmd on-cd &{{
 
 map Z push :z-jump<space>-I<space>
 map zb push :z-jump<space>-b<space>
+map zc push :z-jump<space>-c<space>
 map zz push :z-jump<space>
 
 # Bindings
-map e $nvim $f
 map c
 map d
 map m
 map D
 map L
+map e !nvim $f
+map I !feh "$f" &
+map P !zathura "$f" &
 
-map co $code "$f"
+map co !code "$f"
 map cf $dotbare fadd -f
 
 map au unarchive
@@ -198,6 +201,7 @@ map gd cd ~/Downloads
 map gp cd ~/Pictures
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files
+map gf cd ~/.files
 
 # Git
 map Lb :git_branch

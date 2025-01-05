@@ -20,7 +20,6 @@ rofi_cmd() {
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
-		\
 		-i -selected-row 0 # -normal-window -steal-focus \
 }
 
