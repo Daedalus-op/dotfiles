@@ -43,6 +43,34 @@ return {
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
+    "nvim-neorg/neorg",
+    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.export"] = {},
+          ["core.ui.calendar"] = {},
+          ["core.presenter"] = {
+            config = {
+              zen_mode = "zen-mode",
+            },
+          },
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/projects/notes",
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
       require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
@@ -83,6 +111,7 @@ return {
   },
   -- ** DEFAULT SETTINGS; TO USE THESE, PASS NO ARGUMENTS TO THE SETUP FUNCTION **
   require("notify").setup {
+    merge_duplicates = true,
     background_colour = "#000000",
   },
   require("telescope").setup {
