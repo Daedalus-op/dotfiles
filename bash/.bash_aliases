@@ -1,7 +1,8 @@
 alias mne="maintain && exit" # Maintain and exit
-alias mic="amixer set Capture toggle"
+alias mic_g='amixer get Capture | grep ": Capture.*\[" | sed "s/.*\[//" | uniq | sed "s/\]//"'
+alias mic='amixer set Capture toggle 1> /dev/null && echo "Mic Status: $(mic_g)"'
 alias kittup="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n" # Update kitty
-alias sai="sudo apt install"                                                                 # apt update
+alias sai="sudo aptitude install"                                                            # apt update
 alias python="python3"
 alias code="codium"
 alias vim="nvim"
@@ -25,8 +26,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 ## work
-alias xilset=". /tools/Xilinx/Vitis/2022.2/settings64.sh"
-alias xrtset=". /opt/xilinx/xrt/setup.sh"
+alias xilset="source /tools/Xilinx/Vitis/2024.2/settings64.sh"
+alias vivado="xilset && vivado"
 alias openl="nix-shell --pure ~/openlane2/shell.nix"
 alias cdl1="cd ~/Vitis_Libraries/database/L1"
 alias cdl2="cd ~/Vitis_Libraries/database/L2"
