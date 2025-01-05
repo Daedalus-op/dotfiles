@@ -71,8 +71,8 @@ confirm_cmd() {
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${theme} \
-		-normal-window -steal-focus
+		-theme ${theme}
+	# -normal-window -steal-focus
 }
 # sleep
 function sleep {
