@@ -26,8 +26,8 @@ case "$MIME" in
     # Images (using chafa for terminal previews)
     image/*)
 		set polite on
-		# chafa "$1"
-		chafa -f kitty --animate off --polite on "$1"
+		chafa "$1"
+		# chafa -f kitty --animate off --polite on "$1"
 		# kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" < /dev/null > /dev/tty
         ;;
     # Default case for unknown types
