@@ -2,6 +2,6 @@
 Type=Application
 Exec=flatpak run app.zen_browser.zen --private-window
 Name=Zen Private
-Icon=zen-indigo
+Icon=zen-coral
 Comment=Private Zen
 Categories=Application;Browser;Private

@@ -12,6 +12,7 @@ if [ -f "$LFCD" ]; then
 	source "$LFCD"
 fi
 bind '"\C-o":"lfcd\C-m"'
+bind '"\C-b":"br\C-m"'
 
 hist_fzf() {
 	local selected_command
@@ -35,7 +36,7 @@ function maintain {
 	# echo "---Apt autoremove------------------------------------------------------------------------------------------------------"
 	# sudo apt autoremove
 	echo "--- Flatpak update --------------------------------------------------------------------------------------------------------"
-	flatpak update
+	flatpak update -y
 	echo "--- Flatpak clean ---------------------------------------------------------------------------------------------------------"
 	flatpak uninstall --unused --delete-data
 	echo "------------------------------------------------- Maintain done -----------------------------------------------------------"

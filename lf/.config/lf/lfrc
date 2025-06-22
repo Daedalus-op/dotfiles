@@ -171,7 +171,7 @@ map e !nvim $f
 map I !feh "$f" &
 map P !zathura "$f" &
 
-map co $code "$f"
+map co !code "$f"
 map cf $dotbare fadd -f
 
 map au unarchive

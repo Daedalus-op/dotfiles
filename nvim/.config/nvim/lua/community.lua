@@ -19,5 +19,5 @@ return {
   { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.markdown-and-latex.vimtex" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
-  { import = "astrocommunity.media.image-nvim" },
+  -- { import = "astrocommunity.media.image-nvim" },
 }
