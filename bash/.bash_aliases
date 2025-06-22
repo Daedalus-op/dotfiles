@@ -33,14 +33,23 @@ alias openl="nix-shell --pure ~/openlane2/shell.nix"
 alias cdl1="cd ~/Vitis_Libraries/database/L1"
 alias cdl2="cd ~/Vitis_Libraries/database/L2"
 alias cdl3="cd ~/Vitis_Libraries/database/L3"
+alias rv32="export RISCV=/opt/riscv/riscv32"
+alias rv64="export RISCV=/opt/riscv/riscv64 && export PATH=$PATH:/opt/riscv/riscv64/bin/:"
+alias rvc="riscv64-unknown-elf-gcc"
+alias rvr="spike --isa=RV32IMAC pk"
 
 ## Chips login
-alias chips_ub="kitty +kitten ssh -X chips@10.2.80.59"
-# alias chips_rh="kitty +kitten ssh -X CHIPS@10.2.81.96"
-# alias chips_ub_mnt="sshfs chips@10.2.80.59:/home/chips ~/remote/"
-# alias chips_rh_mnt="sshfs CHIPS@10.2.81.96:/home/CHIPS ~/remote/"
+alias chips_ub="kitty +kitten ssh -X chips@chips_server_ub"
+alias chips_ab="kitty +kitten ssh -X chips@chips_abadon"
+alias chips_st="kitty +kitten ssh -X chips@chips_stolen"
+alias cabin="kitty +kitten ssh -X jsp@cabin"
+# alias chips_rh="kitty +kitten ssh -X CHIPS@chips_redhat_old"
+
+alias run="make vivado TUTORIAL=1"
+alias clean="make clean"
 
 ## functions
 if [ -f "$HOME/.shortcuts.sh" ]; then
 	. "$HOME/.shortcuts.sh"
 fi
+export PATH=$PATH:/opt/riscv/riscv32/bin/

@@ -3,8 +3,12 @@
     "file:///home/xubundadu/.config/VSCodium/User/chrome/custom-vscode.css",
     "file:///home/xubundadu/.config/VSCodium/User/chrome/vscode-script.js"
   ],
+
   "markdown.marp.themes": [
-    "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/rose-pine.css"
+    "https://rainbowflesh.github.io/css/rose-pine-dawn.css",
+    "https://rainbowflesh.github.io/css/rose-pine-moon.css",
+    "https://rainbowflesh.github.io/css/rose-pine.css",
+    "https://rnd195.github.io/my-marp-themes/gradient.css"
   ],
   "window.zoomLevel": 0,
   "symbols.hidesExplorerArrows": true,
@@ -15,7 +19,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "breadcrumbs.enabled": false,
   "workbench.activityBar.location": "top",
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.horizontal": "hidden",
 
@@ -99,7 +103,8 @@
 
   // Insert Mode Keybindings
   "vim.insertModeKeyBindings": [
-    { // Exit insert mode by pressing 'j' twice quickly
+    {
+      // Exit insert mode by pressing 'j' twice quickly
       "before": ["j", "j"],
       "after": ["<Esc>"]
     }
@@ -108,55 +113,66 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Basic Operations
 
-    { // Clear search highlighting with Ctrl+n
+    {
+      // Clear search highlighting with Ctrl+n
       "before": ["<leader>", "t"],
       "commands": ["multiCommand.toggleMaximizedPanelAndFocusTerminal"]
     },
-    { // Clear search highlighting with Ctrl+n
+    {
+      // Clear search highlighting with Ctrl+n
       "before": ["<C-n>"],
       "commands": [":nohl"]
     },
-    { // Insert line break above cursor with K
+    {
+      // Insert line break above cursor with K
       "before": ["K"],
       "commands": ["lineBreakInsert"],
       "silent": true
     },
     // Window Management
-    { // Split editor with leader+w
+    {
+      // Split editor with leader+w
       "before": ["<leader>", "w"],
       "commands": ["workbench.action.splitEditor"]
     },
-    { // Save current file with leader+w+w
+    {
+      // Save current file with leader+w+w
       "before": ["<leader>", "w", "w"],
       "commands": [":w"]
     },
-    { // Close current file with leader+w+c
+    {
+      // Close current file with leader+w+c
       "before": ["<leader>", "w", "c"],
       "commands": ["workbench.action.closeActiveEditor"]
     },
     // Sidebar and Explorer
-    { // Toggle sidebar and focus explorer with leader+e
+    {
+      // Toggle sidebar and focus explorer with leader+e
       "before": ["<leader>", "e"],
       "commands": [
         "workbench.action.toggleSidebarVisibility"
         // "workbench.files.action.focusFilesExplorer" // #TODO: dosent work as expected
       ]
     },
-    { // Reveal current file in explorer with leader+f
+    {
+      // Reveal current file in explorer with leader+f
       "before": ["<leader>", "f"],
       "commands": ["revealInExplorer"]
     },
     // File Operations
-    { // Copy current file path with leader+f+y
+    {
+      // Copy current file path with leader+f+y
       "before": ["<leader>", "f", "y"],
       "commands": ["copyFilePath"]
     },
-    { // Create new file in current directory with leader+f+n
+    {
+      // Create new file in current directory with leader+f+n
       "before": ["<leader>", "f", "n"],
       "commands": ["explorer.newFile"]
     },
     // Code Actions
-    { // Toggle line comment with leader+/
+    {
+      // Toggle line comment with leader+/
       "before": ["<leader>", "/"],
       "commands": ["editor.action.commentLine"]
     }
@@ -186,44 +202,52 @@
   ],
   // Visual Mode Keybindings
   "vim.visualModeKeyBindings": [
-    { // Comment selected lines and exit visual mode with leader+/
+    {
+      // Comment selected lines and exit visual mode with leader+/
       "before": ["<leader>", "/"],
       "commands": ["editor.action.commentLine", "extension.vim_escape"]
     },
-    { // Select all occurrences of current selection with leader+a
+    {
+      // Select all occurrences of current selection with leader+a
       "before": ["<leader>", "a"],
       "commands": ["editor.action.selectHighlights"]
     },
-    { // Sort selected lines
+    {
+      // Sort selected lines
       "before": ["<leader>", "s", "s"],
       "commands": ["editor.action.sortLinesAscending"]
     },
-    { // Transform to uppercase
+    {
+      // Transform to uppercase
       "before": ["<leader>", "u"],
       "commands": ["editor.action.transformToUppercase"]
     },
-    { // Transform to lowercase
+    {
+      // Transform to lowercase
       "before": ["<leader>", "l"],
       "commands": ["editor.action.transformToLowercase"]
     }
   ],
   // Multi-command Configuration
   "multiCommand.commands": [
-    { // Toggle maximized terminal panel and focus terminal
+    {
+      // Toggle maximized terminal panel and focus terminal
       "command": "multiCommand.toggleMaximizedPanelAndFocusTerminal",
       "sequence": [
         "workbench.action.toggleMaximizedPanel",
         "workbench.action.terminal.focus"
       ]
     },
-    { // Create new terminal and focus it
+    {
+      // Create new terminal and focus it
       "command": "multiCommand.newTerminalAndFocus",
       "sequence": [
         "workbench.action.terminal.new",
         "workbench.action.terminal.focus"
       ]
     }
-  ]
+  ],
+  "git.blame.statusBarItem.enabled": false
   // The keybinds
   //
   // <C-b> toggle primary side bar

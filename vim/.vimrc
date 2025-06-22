@@ -20,6 +20,8 @@ Plug 'cocopon/iceberg.vim'
 Plug 'effkay/argonaut.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'eskilop/NorthernLights.vim'
+Plug 'tpope/vim-commentary' 
+Plug 'liuchengxu/vim-which-key' 
 
 	" Local sourced
 
