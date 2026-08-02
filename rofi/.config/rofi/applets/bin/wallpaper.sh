@@ -16,7 +16,7 @@ fi
 # Rofi CMD
 rofi_cmd() {
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
-		-theme-str 'textbox-prompt-colon {str: "󰖪";}' \
+		-theme-str 'entry {placeholder: "Wallpapers";}' \
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
@@ -29,8 +29,6 @@ rofi_cmd() {
 categories=$(cd $HOME/.customise/Wallpapers/ && ls)
 
 chosen_cat=$(echo -e "$categories" | uniq -u | rofi_cmd)
-
-# setting background for kitty, todo
 
 if [[ -n "$chosen_cat" ]]; then
 	wall_list=$(cd $HOME/.customise/Wallpapers/$chosen_cat && ls)

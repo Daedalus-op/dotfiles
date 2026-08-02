@@ -24,12 +24,23 @@ local naughty = require("naughty")
 local constants = require("constants")
 local utils = require("utils")
 
+-- assets
+local gfs = require("gears.filesystem")
+local assets_path = gfs.get_configuration_dir() .. "ui/assets/"
+local icons_path = assets_path .. "icons/"
+-- local shapes_path = assets_path .. "shapes/"
+
 local theme = {}
+theme.bar_width = 43
+theme.hints_icon = gears.color.recolor_image(icons_path .. "hints.svg", theme.blue)
+theme.fallback_notif_icon = gears.color.recolor_image(icons_path .. "hints.svg", theme.blue)
 
 theme.icon_theme = "Papirus"
 
 theme.transparent = "#00000000"
-theme.font = "JetBrains Mono Nerd Font Bold 12"
+theme.font_name = "JetBrains Mono Nerd Font Bold"
+theme.font_size = "12"
+theme.font = theme.font_name .. " " .. theme.font_size
 
 theme.black = "#16161D"
 theme.red = "#E46876"
@@ -37,8 +48,22 @@ theme.yellow = "#F2D98C"
 theme.orange = "#FFA066"
 theme.green = "#03C04A"
 theme.white = "#D3D3D3"
+theme.dimblack = "#1a1c25"
+theme.light_black = wal_colors[5] -- "#262831"
+theme.grey = "#666891"
+theme.magenta = "#c296eb"
+theme.blue = wal_colors[5] -- "#86aaec"
+theme.cyan = "#93cee9"
+theme.aqua = "#7bd9e6"
+
+-- dashboard
+theme.dash_width = 600
 
 -- bg
+theme.bg_darker = "#0b0d16"
+theme.bg_contrast = "#0f111a"
+theme.bg_lighter = "#11131c"
+
 theme.bg_normal = theme.black
 theme.bg_focus = theme.green
 theme.bg_urgent = theme.red
@@ -65,12 +90,12 @@ theme.border_normal = theme.bg_normal
 -- taglist
 theme.taglist_bg = theme.bg_normal
 theme.taglist_bg_focus = wal_colors[5] -- theme.green
-theme.taglist_bg_urgent = theme.red
+theme.taglist_bg_urgent = wal_colors[2] -- theme.red
 theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_fg_occupied = wal_colors[5] -- theme.green
 
 -- wallpaper
-theme.wallpaper = gears.surface.load_uncached(constants.wallpapers .. "Pink_mountains.jpg")
+-- theme.wallpaper = gears.surface.load_uncached(constants.wallpapers .. "wall.png")
 
 -- bar
 theme.bar_height = dpi(50)

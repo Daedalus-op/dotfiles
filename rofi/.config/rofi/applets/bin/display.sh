@@ -16,7 +16,7 @@ fi
 # Rofi CMD
 rofi_cmd() {
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
-		-theme-str 'textbox-prompt-colon {str: "󰖪";}' \
+		-theme-str 'entry {placeholder: "Display Options";}' \
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
@@ -24,6 +24,13 @@ rofi_cmd() {
 }
 
 #----------------------------------------------------------------------------------------------------
+
+# Regenerate betterlockscreen's cached lock image for the new display layout
+# (betterlockscreen only re-caches on -u, it won't notice an xrandr change on its own)
+refresh_lockscreen() {
+	current_wall=$(sed -n "s/.*--bg-[a-z]* '\(.*\)'.*/\1/p" ~/.fehbg)
+	[[ -n "$current_wall" ]] && betterlockscreen -u "$current_wall" &
+}
 
 # Get connected displays
 DISPLAYS=$(xrandr --query | grep ' connected' | cut -d' ' -f1)
@@ -37,12 +44,20 @@ if [ $(echo "$DISPLAYS" | wc -l) -gt 1 ]; then
 	if [[ -n "$mode" ]]; then
 		if [[ "$mode" == "Mirror" ]]; then
 			xrandr --output $(echo "$DISPLAYS" | head -n 1) --auto --output $(echo "$DISPLAYS" | tail -n 1) --auto --same-as $(echo "$DISPLAYS" | head -n 1)
+      source ~/.fehbg
+      refresh_lockscreen
 		elif [[ "$mode" == "Send" ]]; then
-			xrandr --output $(echo "$DISPLAYS" | head -n 1) --off  --output $(echo "$DISPLAYS" | tail -n 1) --auto --primary 
+			xrandr --output $(echo "$DISPLAYS" | head -n 1) --off  --output $(echo "$DISPLAYS" | tail -n 1) --auto --primary
+      source ~/.fehbg
+      refresh_lockscreen
 		elif [[ "$mode" == "Extend Right" ]]; then
 			xrandr --output $(echo "$DISPLAYS" | head -n 1) --left-of $(echo "$DISPLAYS" | tail -n 1)
+      source ~/.fehbg
+      refresh_lockscreen
 		elif [[ "$mode" == "Extend Left" ]]; then
 			xrandr --output $(echo "$DISPLAYS" | head -n 1) --right-of $(echo "$DISPLAYS" | tail -n 1)
+      source ~/.fehbg
+      refresh_lockscreen
 		else
 			exit
 		fi

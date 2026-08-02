@@ -7,6 +7,8 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 ---@type LazySpec
 return {
+  vim.keymap.del("n", "L"),
+  vim.keymap.del("n", "H"),
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
@@ -47,6 +49,12 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
+        ["L"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer", nowait = true },
+        ["H"] = {
+          function() require("astrocore.buffer").nav(-vim.v.count1) end,
+          desc = "Previous buffer",
+          nowait = true,
+        },
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 

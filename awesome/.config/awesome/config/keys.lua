@@ -34,16 +34,16 @@ local GLOBAL_GROUPS = {
 			},
 			[mods.c] = {
 				{ key = "r", action = awesome.restart, description = "reload awesome" },
-				{ key = "q", action = awesome.quit,    description = "quit awesome" },
+				{ key = "q", action = awesome.quit, description = "quit awesome" },
 			},
 		},
 	},
 	client = {
 		[mods.a] = {
 			[""] = {
-				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }),  description = "focus next index" },
+				{ key = "j", action = bind(awful.client.focus.byidx, { 1 }), description = "focus next index" },
 				{ key = "k", action = bind(awful.client.focus.byidx, { -1 }), description = "focus previous index" },
-				{ key = "u", action = awful.client.urgent.jumpto,             description = "jump to urgent client" },
+				{ key = "u", action = awful.client.urgent.jumpto, description = "jump to urgent client" },
 				{
 					key = "Tab",
 					action = function()
@@ -56,7 +56,7 @@ local GLOBAL_GROUPS = {
 				},
 			},
 			[mods.s] = {
-				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }),  description = "swap next client" },
+				{ key = "j", action = bind(awful.client.swap.byidx, { 1 }), description = "swap next client" },
 				{ key = "k", action = bind(awful.client.swap.byidx, { -1 }), description = "swap previous client" },
 			},
 		},
@@ -64,27 +64,31 @@ local GLOBAL_GROUPS = {
 	launcher = {
 		[mods.m] = {
 			[""] = {
+				-- {
+				-- 	key = "z",
+				-- 	action = bind(
+				-- 		awful.spawn,
+				-- 		{ "kitten quick-access-terminal -o lines=10 -o columns=20 -o background_opacity=0.85" }
+				-- 	),
+				-- 	-- action = function()
+				-- 	-- 	flt_terminal:toggle()
+				-- 	-- end,
+				-- 	description = "open floating terminal",
+				-- },
 				{
-					key = "z",
-					action = function()
-						flt_terminal:toggle()
-					end,
-					description = "open floating terminal",
+					key = "n",
+					action = bind(awesome.emit_signal, { "notifcenter::toggle" }),
+					description = "open notifications center",
 				},
-				{
-					key = "w",
-					action = bind(awful.spawn, { "rofi -show window -window-thumbnail" }),
-					description = "open window switcher",
-				},
+				-- {
+				-- 	key = "d",
+				-- 	action = bind(awesome.emit_signal, { "dashboard::toggle" }),
+				-- 	description = "open dashboard",
+				-- },
 				{
 					key = "Return",
 					action = bind(awful.spawn, { terminal }),
 					description = "open terminal",
-				},
-				{
-					key = "r",
-					action = bind(awful.spawn, { "rofi -show drun -show-icons" }),
-					description = "open apps",
 				},
 				{
 					key = "e",
@@ -93,8 +97,8 @@ local GLOBAL_GROUPS = {
 				},
 				{
 					key = "c",
-					action = bind(awful.spawn, { "codium" }),
-					description = "open codium",
+					action = bind(awful.spawn, { "zed" }),
+					description = "open code editor",
 				},
 			},
 			[mods.s] = {
@@ -109,18 +113,8 @@ local GLOBAL_GROUPS = {
 			[""] = {
 				{
 					key = "space",
-					action = bind(awful.spawn, { "launcher_t1" }),
+					action = bind(awful.spawn, { "applet -r launcher" }),
 					description = "open apps",
-				},
-				{
-					key = "q",
-					action = bind(awful.spawn, { "applet -r quicklinks" }),
-					description = "open quicklinks",
-				},
-				{
-					key = "f",
-					action = bind(awful.spawn, { "applet -r web" }),
-					description = "open websearch",
 				},
 				{
 					key = "n",
@@ -131,6 +125,11 @@ local GLOBAL_GROUPS = {
 					key = "e",
 					action = bind(awful.spawn, { editor_cmd }),
 					description = "open nvim",
+				},
+				{
+					key = "w",
+					action = bind(awful.spawn, { "applet -r windows" }),
+					description = "open window switcher",
 				},
 				-- { TODO: Add pomodoro timer
 				-- 	key = "p",
@@ -443,7 +442,7 @@ local function apply_mappings(groups)
 					end
 
 					ret[#ret + 1] =
-							awful.key(modkey, key.key, key.action, { description = key.description, group = group })
+						awful.key(modkey, key.key, key.action, { description = key.description, group = group })
 				end
 			end
 		end

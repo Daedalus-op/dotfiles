@@ -99,6 +99,20 @@ cmd fzf_jump ${{
 }}
 map <c-f> :fzf_jump
 
+cmd fzf_find ${{
+    res="$(find . | fzf --reverse --header='File Finder')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <a-f> :fzf_find
+
 cmd broot_jump ${{
     f=$(mktemp)
     res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
@@ -123,6 +137,7 @@ cmd fzf_search ${{
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
 map <c-g> :fzf_search
+map <a-g> :fzf_search
 
 cmd z-jump ${{
   ZLUA_SCRIPT="$HOME/.files/z.lua"
@@ -171,7 +186,7 @@ map e !nvim $f
 map I !feh "$f" &
 map P !zathura "$f" &
 
-map co !code "$f"
+map co !codium "$f"
 map cf $dotbare fadd -f
 
 map au unarchive

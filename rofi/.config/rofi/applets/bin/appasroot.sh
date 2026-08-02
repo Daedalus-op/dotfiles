@@ -25,19 +25,19 @@ elif [[ "$theme" == *'type-5'* ]]; then
 	list_col='1'
 	list_row='5'
 	win_width='520px'
-elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
+elif [[ ("$theme" == *'type-2'*) || ("$theme" == *'type-4'*) ]]; then
 	list_col='5'
 	list_row='1'
 	win_width='670px'
 fi
 
 # Options
-layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
+layout=$(cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Alacritty"
-	option_2=" Thunar"
+	option_1=" Kitty"
+	option_2=" Nemo"
 	option_3=" Geany"
-	option_4=" Ranger"
+	option_4=" LF"
 	option_5=" Vim"
 else
 	option_1=""
@@ -52,12 +52,13 @@ rofi_cmd() {
 	rofi -theme-str "window {width: $win_width;}" \
 		-theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
+		-theme-str 'entry {placeholder: "App As Root";}' \
 		-dmenu \
 		-p "$prompt" \
 		-mesg "$mesg" \
 		-markup-rows \
-		-theme ${theme} \
-		# -normal-window -steal-focus
+		-i -theme ${theme}
+	# -normal-window -steal-focus
 }
 
 # Pass variables to rofi dmenu
@@ -71,11 +72,11 @@ run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		${polkit_cmd} kitty
 	elif [[ "$1" == '--opt2' ]]; then
-		${polkit_cmd} dbus-run-session thunar
+		${polkit_cmd} dbus-run-session nemo
 	elif [[ "$1" == '--opt3' ]]; then
 		${polkit_cmd} geany
 	elif [[ "$1" == '--opt4' ]]; then
-		${polkit_cmd} kitty -e ranger
+		${polkit_cmd} kitty -e lf
 	elif [[ "$1" == '--opt5' ]]; then
 		${polkit_cmd} kitty -e vim
 	fi
@@ -84,20 +85,19 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
-		run_cmd --opt1
-        ;;
-    $option_2)
-		run_cmd --opt2
-        ;;
-    $option_3)
-		run_cmd --opt3
-        ;;
-    $option_4)
-		run_cmd --opt4
-        ;;
-    $option_5)
-		run_cmd --opt5
-        ;;
+$option_1)
+	run_cmd --opt1
+	;;
+$option_2)
+	run_cmd --opt2
+	;;
+$option_3)
+	run_cmd --opt3
+	;;
+$option_4)
+	run_cmd --opt4
+	;;
+$option_5)
+	run_cmd --opt5
+	;;
 esac
-

@@ -15,7 +15,7 @@ fi
 # Rofi CMD
 rofi_cmd() {
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
-		-theme-str 'textbox-prompt-colon {str: "󰖪";}' \
+		-theme-str 'entry {placeholder: "Now Playing";}' \
 		-dmenu \
 		-markup-rows \
 		-theme ${theme} \
@@ -24,11 +24,11 @@ rofi_cmd() {
 }
 
 option_1="󰐎 Toggle"
-option_2=" Play"
-option_3=" Pause"
-option_4=" Stop"
-option_5="󰒮 Previous"
-option_6="󰒭 Next"
+option_2="󰒭 Next"
+option_3="󰒮 Previous"
+option_4=" Play"
+option_5=" Pause"
+option_6=" Stop"
 option_7="  Increase Volume +10%"
 option_8="  Decrease Volume -10%"
 option_9="󰈆  Exit"
@@ -36,10 +36,21 @@ option_9="󰈆  Exit"
 #----------------------------------------------------------------------------------------------------
 
 action="nil"
-players=$(playerctl -l)
-echo $players
+players=($(playerctl -l 2>/dev/null))
+if [ ${#players[@]} -gt 1 ]; then
+	# Build a list of "Title (PlayerID)" to show in rofi
+	mapfile -t options < <(for p in "${players[@]}"; do
+		title=$(playerctl -p "$p" metadata title 2>/dev/null)
+		echo "$title ($p)"
+	done)
 
-chosen_player=$(echo -e "$players" | rofi_cmd)
+	chosen=$(printf "%s\n" "${options[@]}" | rofi_cmd)
+	# Extract the player ID inside parentheses
+	chosen_player=$(echo "$chosen" | sed -E 's/.*\((.*)\)/\1/')
+else
+	chosen_player="${players[0]}"
+fi
+
 echo $chosen_player
 
 if [[ -n "$chosen_player" ]]; then
@@ -52,19 +63,19 @@ if [[ -n "$chosen_player" ]]; then
 				playerctl -p $chosen_player play-pause
 				;;
 			$option_2)
-				playerctl -p $chosen_player play
+				playerctl -p $chosen_player next
 				;;
 			$option_3)
-				playerctl -p $chosen_player pause
-				;;
-			$option_4)
-				playerctl -p $chosen_player stop
-				;;
-			$option_5)
 				playerctl -p $chosen_player previous
 				;;
+			$option_4)
+				playerctl -p $chosen_player play
+				;;
+			$option_5)
+				playerctl -p $chosen_player pause
+				;;
 			$option_6)
-				playerctl -p $chosen_player next
+				playerctl -p $chosen_player stop
 				;;
 			$option_7)
 				playerctl -p $chosen_player volume 0.10+

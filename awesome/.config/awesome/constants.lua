@@ -9,6 +9,7 @@ M.term_fm = "lf"
 M.fm = "nemo"
 M.editor = "nvim"
 M.editor_cmd = M.terminal .. " -e " .. M.editor
+M.launcher = "applet -r launcher"
 M.mods = {
 	m = "Mod4",
 	s = "Shift",

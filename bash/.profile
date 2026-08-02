@@ -29,8 +29,7 @@ fi
 export MOZ_ENABLE_WAYLAND=1
 . "$HOME/.cargo/env"
 PATH="$HOME/.config/rofi/scripts:$PATH"
-PATH="$HOME/thunderbird:$PATH"
 
-# if [ -f "$HOME/.autostart.sh" ]; then
-# 	source ~/.autostart.sh
-# fi
+if [ -f "$HOME/.autostart.sh" ]; then
+	source ~/.autostart.sh
+fi
