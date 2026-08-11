@@ -191,7 +191,7 @@ local GLOBAL_GROUPS = {
 	},
 	screen = {
 		[mods.m] = {
-			["c"] = {
+			[""] = {
 				{
 					key = "j",
 					action = bind(awful.screen.focus_relative, { 1 }),

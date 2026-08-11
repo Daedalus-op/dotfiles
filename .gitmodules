@@ -1,0 +1,6 @@
+[submodule "awesome/.config/awesome/modules/color"]
+	path = awesome/.config/awesome/modules/color
+	url = https://github.com/andOrlando/color.git
+[submodule "awesome/.config/awesome/modules/rubato"]
+	path = awesome/.config/awesome/modules/rubato
+	url = https://github.com/andOrlando/rubato.git
