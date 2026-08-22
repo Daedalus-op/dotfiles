@@ -1,20 +1,23 @@
-return {
-  require("markview").setup {
-    config = {
-      latex = {
-        enable = true,
+if true then
+  return {}
+end
 
-        blocks = {},
-        commands = {},
-        escapes = {},
-        fonts = {},
-        inlines = {},
-        parenthesis = {},
-        subscripts = {},
-        superscripts = {},
-        symbols = {},
-        texts = {},
-      },
+return {
+  "OXY2DEV/markview.nvim",
+  config = {
+    latex = {
+      enable = true,
+
+      blocks = {},
+      commands = {},
+      escapes = {},
+      fonts = {},
+      inlines = {},
+      parenthesis = {},
+      subscripts = {},
+      superscripts = {},
+      symbols = {},
+      texts = {},
     },
   },
 }

@@ -1,8 +1,9 @@
 return {
   "jakewvincent/mkdnflow.nvim",
+  event = "VeryLazy",
   config = function()
-    require("mkdnflow").setup {
+    require("mkdnflow").setup({
       -- Config goes here; leave blank for defaults
-    }
+    })
   end,
 }
